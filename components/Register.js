@@ -17,7 +17,7 @@ export default function Register({navigation}) {
                     Email
                 </Text>
                 <TextInput 
-                    autoCapitalize={false}
+                    autoCapitalize='none'
                     autoCorrect={false}
                     style={{
                         height: 35,
@@ -33,7 +33,7 @@ export default function Register({navigation}) {
                     First Name
                 </Text>
                 <TextInput 
-                    autoCapitalize={false}
+                    autoCapitalize='none'
                     autoCorrect={false}
                     style={{
                         height: 35,
@@ -49,7 +49,7 @@ export default function Register({navigation}) {
                     Last Name
                 </Text>
                 <TextInput 
-                    autoCapitalize={false}
+                    autoCapitalize='none'
                     autoCorrect={false}
                     style={{
                         height: 35,
@@ -66,7 +66,7 @@ export default function Register({navigation}) {
                 </Text>
                 <View style={{flexDirection: 'row'}}>
                     <TextInput
-                        autoCapitalize={false}
+                        autoCapitalize='none'
                         autoCorrect={false}
                         secureTextEntry={true}
                         style={{
@@ -94,6 +94,7 @@ export default function Register({navigation}) {
                         style={{ width: 145, marginTop: 40 }}
                         borderRadius={15}
                         outlineColor='#2BF594'
+                        onPress={() => navigation.navigate('FindOffers')}
                     />
                 </View>
 

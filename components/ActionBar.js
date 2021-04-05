@@ -11,10 +11,10 @@ export default function ActionBarHome() {
     return (
         <View style={styles.bar}>
             <View style={styles.iconRow}>
-            <Icon type='font-awesome-5' name={'coins'} size={24} color="white" onPress={() => navigation.navigate('MyOffers')}/>
-            <Icon type='font-awesome-5' name={'chart-bar'} size={24} color="white" onPress={() => navigation.navigate('Accounts')}/>
-            <Icon type='font-awesome-5' name={'search-dollar'} size={24} color="white" onPress={() => navigation.navigate('FindOffers')}/>
-            <Icon type='font-awesome-5' name={'question-circle'} size={24} color="white" onPress={() => navigation.navigate('FAQ')} />
+                <Icon type='font-awesome-5' name={'coins'} size={24} color="white" onPress={() => navigation.navigate('MyOffers')}/>
+                <Icon type='font-awesome-5' name={'chart-bar'} size={24} color="white" onPress={() => navigation.navigate('Accounts')}/>
+                <Icon type='font-awesome-5' name={'search-dollar'} size={24} color="white" onPress={() => navigation.navigate('FindOffers')}/>
+                <Icon type='font-awesome-5' name={'question-circle'} size={24} color="white" onPress={() => navigation.navigate('FAQ')} />
             </View>
         </View>
     )
@@ -34,12 +34,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         textAlign: 'center'
-    },
-    absoluteContainer: {
-        position: 'absolute',
-        bottom: 80,
-        left: 0,
-        right: 0
     },
     iconRow: {
         display: 'flex',

@@ -17,7 +17,7 @@ export default function Landing({navigation}) {
                         Email
                 </Text>
                 <TextInput 
-                    autoCapitalize={false}
+                    autoCapitalize='none'
                     autoCorrect={false}
                     style={{
                         height: 35,
@@ -35,7 +35,7 @@ export default function Landing({navigation}) {
                 </Text>
                 <View style={{flexDirection: 'row'}}>
                     <TextInput
-                        autoCapitalize={false}
+                        autoCapitalize='none'
                         autoCorrect={false}
                         secureTextEntry={true}
                         style={{

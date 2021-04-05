@@ -44,7 +44,8 @@ export default class FAQ extends PureComponent {
 
         return (
             <View style={{ flex: 1, backgroundColor: '#25315C'}}>
-            <ScrollView>
+            <View style={{ flexDirection: 'column', marginBottom: 0, paddingBottom: 0 }}>
+            <ScrollView style={{ marginBottom: 80, paddingTop: 10 }}>
                 <Header></Header>
                 <View style={{ display: 'flex', flexDirection:'row', marginTop: 30 }}>
                     <Text style={{ fontSize: 30, color: '#2BF594', fontWeight: 'bold', position: 'absolute', marginLeft: 20}}>   
@@ -206,9 +207,10 @@ export default class FAQ extends PureComponent {
                     </Card>
                 </ExpandableSection>
 
-                <ActionBarHome></ActionBarHome>
 
             </ScrollView>
+            </View>
+            <ActionBarHome></ActionBarHome>
             </View>
         )
     }

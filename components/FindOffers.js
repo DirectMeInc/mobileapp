@@ -233,12 +233,12 @@ export default class FindOffers extends React.Component {
                         ]}
                         defaultValue={this.state.state}
                         placeholder="State"
-                        containerStyle={{height: 40, width: '40%'}}
-                        style={{backgroundColor: '#fafafa', marginLeft: 20}}
+                        containerStyle={{width: 120, height: 40, marginLeft: 20}}
+                        style={{backgroundColor: '#fafafa'}}
                         itemStyle={{
                             justifyContent: 'flex-start',
                         }}
-                        dropDownStyle={{backgroundColor: '#fafafa', marginLeft: 20}}
+                        dropDownStyle={{backgroundColor: '#fafafa'}}
                         onChangeItem={item => this.setState({
                             state: item.value
                         })}
@@ -246,20 +246,23 @@ export default class FindOffers extends React.Component {
                 <DropDownPicker
                         items={[
                             {label: 'Chase', value: 'Chase'},
+                            {label: 'Wells Fargo', value: 'Wells Fargo'},
+
                         ]}
                         defaultValue={this.state.bank}
                         placeholder="Bank"
-                        containerStyle={{height: 40, width: '40%'}}
-                        style={{backgroundColor: '#fafafa', marginRight: 20}}
+                        containerStyle={{width: 120, height: 40, marginRight: 20}}
+                        style={{backgroundColor: '#fafafa'}}
                         itemStyle={{
                             justifyContent: 'flex-start',
                         }}
-                        dropDownStyle={{backgroundColor: '#fafafa', marginRight: 20}}
+                        dropDownStyle={{backgroundColor: '#fafafa'}}
                         onChangeItem={item => this.setState({
                             bank: item.value
                         })}
                 />
             </View>
+
             <Text style={{marginLeft: 20, marginTop: 25, fontSize: 15}}>Savings Required</Text>
             <View row centerV style={{marginTop: 20}}>
                 <Slider 
@@ -353,7 +356,9 @@ export default class FindOffers extends React.Component {
         const { navigate } = this.props.navigation;
 
         return (
-            <View style={{ flex: 1, backgroundColor: '#25315C'}}>
+          <View style={{ flex: 1, backgroundColor: '#25315C'}}>
+            <View style={{ flexDirection: 'column', marginBottom: 0, paddingBottom: 0 }}>
+              <ScrollView style={{ marginBottom: 80, paddingTop: 10 }}>
                 <Header></Header>
 
             <View style={{ display: 'flex', flexDirection:'row', marginTop: 30 }}>
@@ -373,7 +378,15 @@ export default class FindOffers extends React.Component {
             <View style={{ marginTop: 30, marginLeft:20, marginRight:30}}>
                 <DropDownPicker
                         items={[
-                            {label: 'Reward', value: 'Reward'},
+                            {label: 'Recommended', value: 'Recommended'},
+                            {label: 'Bonus', value: 'Bonus'},
+                            {label: 'Savings Required', value: 'Savings Required'},
+                            {label: 'Monthly Direct Deposits', value: 'Monthly Direct Deposits'},
+                            {label: 'Monthly Direct Transactions', value: 'Monthly Direct Transactions'},
+                            {label: 'Expiration (Earliest)', value: 'Expiration (Earliest)'},
+                            {label: 'Expiration (Latest)', value: 'Expiration (Latest)'},
+
+
                         ]}
                         defaultValue={this.state.state}
                         placeholder="Sort By"
@@ -490,11 +503,47 @@ export default class FindOffers extends React.Component {
                     </Card>
                 </View>
 
+                <View style={{flexDirection:'row', justifyContent: 'center', alignItems: 'center', textAlign:'center', marginTop:20}}>
+                    <Card
+                        height={120}
+                        width='45%'
+                        containerStyle={{backgroundColor:'#C4C4C4',flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}}
+                    >
+
+                        <Card.Section imageSource={{uri: 'https://i.pinimg.com/originals/70/4a/1e/704a1e534e8dc0138eee3ded449555d5.png'}} imageStyle={{width: 50, height: 50, marginTop: 10}}/>
+                        <Card.Section
+                            content={[
+                            {text: 'Chase', text70: true, grey10: true},
+                            {text: '$150 Savings', text80: true}
+                            ]}
+                            contentStyle={{marginBottom: 10, marginTop: 10, alignItems: 'center'}}
+                        />
+                    </Card>
+
+                    <Card
+                        height={120}
+                        width='45%'
+                        containerStyle={{backgroundColor:'#C4C4C4',flexDirection: 'column', alignItems: 'center', justifyContent: 'center', marginLeft: 20}}
+                    >
+
+                        <Card.Section imageSource={{uri: 'https://i.pinimg.com/originals/70/4a/1e/704a1e534e8dc0138eee3ded449555d5.png'}} imageStyle={{width: 50, height: 50, marginTop: 10}}/>
+                        <Card.Section
+                            content={[
+                            {text: 'Chase', text70: true, grey10: true},
+                            {text: '$150 Savings', text80: true}
+                            ]}
+                            contentStyle={{marginBottom: 10, marginTop: 10, alignItems: 'center'}}
+                        />
+                    </Card>
+                </View>
+
+
             </View>
 
             {this.renderDialog()}
+            </ScrollView>
+            </View>
             <ActionBarHome></ActionBarHome>
-
             </View>
         )
     }

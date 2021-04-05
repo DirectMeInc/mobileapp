@@ -1,4 +1,5 @@
 import React, { Component, useContext } from 'react';
+import {ScrollView} from 'react-native';
 import { View, Image, Text, Button, Colors, PanningProvider, Dialog, Constants, Slider, Card } from 'react-native-ui-lib';
 import Header from './Header';
 import ActionBarHome from './ActionBar';
@@ -8,6 +9,8 @@ export default class Accounts extends React.Component {
         const { navigate } = this.props.navigation;
         return (
             <View style={{ flex: 1, backgroundColor: '#25315C'}}>
+            <View style={{ flexDirection: 'column', marginBottom: 0, paddingBottom: 0 }}>
+                <ScrollView style={{ marginBottom: 80, paddingTop: 10 }}>
                 <Header></Header>
                 <View style={{ flexDirection:'row', marginTop: 30}}>
                     <Text style={{ fontSize: 30, color: '#2BF594', fontWeight: 'bold', position: 'absolute', marginLeft:20, marginRight:30}}>   
@@ -36,7 +39,9 @@ export default class Accounts extends React.Component {
                         </Card>
                     </View>
 
-                <ActionBarHome></ActionBarHome>
+                </ScrollView>
+            </View>
+            <ActionBarHome></ActionBarHome>
             </View>
 
         )
