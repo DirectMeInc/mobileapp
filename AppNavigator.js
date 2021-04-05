@@ -10,6 +10,7 @@ import FAQScreen from './components/FAQ';
 import MyOffersScreen from './components/MyOffers';
 import AccountsScreen from './components/Accounts';
 import AccountInfoScreen from './components/AccountInfo';
+import StartOfferScreen from './components/StartOffer';
 const Stack = createStackNavigator()
 
 function MainStackNavigator() {
@@ -53,6 +54,11 @@ function MainStackNavigator() {
                 <Stack.Screen
                     name='OfferPage'
                     component={OfferPageScreen}
+                    options={{ headerShown: false }}
+                />
+                <Stack.Screen
+                    name='StartOffer'
+                    component={StartOfferScreen}
                     options={{ headerShown: false }}
                 />
                 <Stack.Screen

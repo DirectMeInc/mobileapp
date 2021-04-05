@@ -1,5 +1,5 @@
 import React, { Component, useContext, useState } from 'react';
-import { useWindowDimensions } from 'react-native';
+import { useWindowDimensions, ScrollView } from 'react-native';
 import { View, Image, Text, Card } from 'react-native-ui-lib';
 import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
 import Icons from 'react-native-vector-icons/MaterialIcons';
@@ -76,7 +76,7 @@ export default function OfferTabs() {
           renderScene={renderScene}
           onIndexChange={setIndex}
           initialLayout={{ width: layout.width }}
-          style = {{ marginTop: 50 }}
+          style = {{ marginTop: 20 }}
           renderTabBar={renderTabBar}
           />
     );
