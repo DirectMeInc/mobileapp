@@ -226,7 +226,7 @@ export default class FindOffers extends React.Component {
             <View marginT-20 marginH-20>
               {!showHeader && <Text text50>{this.title}</Text>}
             </View>
-            <View style={{flexDirection:"row", justifyContent: "space-between"}}>
+            <View style={{flexDirection:"row", justifyContent: "space-between", zIndex: 2}}>
                 <DropDownPicker
                         items={[
                             {label: 'California', value: 'California'},
@@ -308,6 +308,7 @@ export default class FindOffers extends React.Component {
                     labelStyle={{ fontWeight: '600', fontSize: 20, color: 'white' }}
                     style={{ width: 100, marginTop: 20}}
                     borderRadius={10}
+                    onPress={this.hideDialog}
                 />
             </View>
 

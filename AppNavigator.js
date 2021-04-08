@@ -11,6 +11,7 @@ import MyOffersScreen from './components/MyOffers';
 import AccountsScreen from './components/Accounts';
 import AccountInfoScreen from './components/AccountInfo';
 import StartOfferScreen from './components/StartOffer';
+import OnboardingScreen from './components/Onboarding';
 const Stack = createStackNavigator()
 
 function MainStackNavigator() {
@@ -59,6 +60,11 @@ function MainStackNavigator() {
                 <Stack.Screen
                     name='StartOffer'
                     component={StartOfferScreen}
+                    options={{ headerShown: false }}
+                />
+                <Stack.Screen
+                    name='Onboarding'
+                    component={OnboardingScreen}
                     options={{ headerShown: false }}
                 />
                 <Stack.Screen
