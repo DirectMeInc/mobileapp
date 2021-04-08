@@ -25,19 +25,6 @@ export default class FAQ extends PureComponent {
         return this.state.top ? 'sort-up' : 'sort-down';
     }
 
-    getHeaderElement() {
-        return (
-            <Card style={styles.card}>
-                <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-                <Text style={styles.text}>
-                    Why are banks willing to pick me?
-                </Text>
-                <Icon type='font-awesome-5' name={this.getChevron()} style={styles.icon} color="white"/>
-                </View>
-            </Card>
-        );
-    }
-
 
     render () {
         const {expanded, top} = this.state;
