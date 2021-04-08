@@ -15,6 +15,7 @@ export default function ActionBarHome() {
                 <Icon type='font-awesome-5' name={'chart-bar'} size={24} color="white" onPress={() => navigation.navigate('Accounts')}/>
                 <Icon type='font-awesome-5' name={'search-dollar'} size={24} color="white" onPress={() => navigation.navigate('FindOffers')}/>
                 <Icon type='font-awesome-5' name={'question-circle'} size={24} color="white" onPress={() => navigation.navigate('FAQ')} />
+                <Icon type='font-awesome-5' name={'user-circle'} size={24} color="white" onPress={() => navigation.navigate('Profile')} />
             </View>
         </View>
     )

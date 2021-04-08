@@ -4,6 +4,7 @@ import { View, Image } from 'react-native-ui-lib';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 export default class OfficialHeader extends React.Component {
+
     render() {
         return (
             <Header
@@ -14,12 +15,6 @@ export default class OfficialHeader extends React.Component {
                             name='bell'
                             size={22}
                             color='white'
-                        />
-                        <Icon
-                            name='user-circle'
-                            size={22}
-                            color='white'
-                            style={{marginLeft: 20}}
                         />
                     </View>}
                 containerStyle={{
