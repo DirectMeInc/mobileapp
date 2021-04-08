@@ -19,8 +19,8 @@ export default class AccountInfo extends React.Component {
     
         return (
             <ListItem
-              activeOpacity={0.3}
-              height={77.5}
+              height={60.5}
+              containerStyle={{backgroundColor:"#f2f2f2"}}
             >
               <ListItem.Part left>
                 <Image
@@ -90,7 +90,7 @@ export default class AccountInfo extends React.Component {
 
                     <Text style={{fontSize: 25, fontWeight: 'bold', color: '#6F8CF6', marginTop: 30, marginLeft:20}}>Transactions</Text>
 
-                    <Text style={{fontSize: 15, fontWeight: 'bold', color: '#dcdcdc', marginTop: 30, marginLeft:20, marginBottom: 20}}>Today</Text>
+                    <Text style={{fontSize: 15, fontWeight: 'bold', color: '#dcdcdc', marginTop: 30, marginLeft:20, marginBottom: 10}}>Today</Text>
                 </View>
                 }
                 data={orders}
