@@ -78,10 +78,6 @@ export default class FindOffers extends React.Component {
         this.setState({sliderValue3: value});
       }
     
-      titlePressed = ({title}) => {
-        Alert.alert('Pressed on', title);
-      };
-    
       setPanDirection = panDirection => {
         if (panDirection !== this.state.panDirection) {
           this.setState({panDirection});
@@ -118,23 +114,6 @@ export default class FindOffers extends React.Component {
     
       hideDialog = () => {
         this.setState({showDialog: false});
-      };
-    
-      getWarning = () => {
-        const {showHeader, scroll, panDirection} = this.state;
-        if (!showHeader && scroll !== this.SCROLL_TYPE.NONE) {
-          return <Text color={Colors.red30}>It is recommended to have pannable header with scrollable content</Text>;
-        } else if (showHeader && panDirection !== PanningProvider.Directions.DOWN) {
-          return <Text color={Colors.red30}>It is recommended to have pannable header with direction=down</Text>;
-        }
-      };
-    
-      getMessage = () => {
-        const {panDirection, position, scroll} = this.state;
-    
-        return `Panning direction: ${panDirection ? panDirection : 'none'}
-    Position: ${position ? position : 'center'}
-    Scroll: ${scroll}`;
       };
     
       renderPannableHeader = props => {
