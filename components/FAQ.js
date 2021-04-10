@@ -172,27 +172,7 @@ export default class FAQ extends PureComponent {
                     </Card>
                 </ExpandableSection>
 
-                <ExpandableSection
-                    top={top}
-                    expanded={expanded}
-                    sectionHeader={
-                        <Card style={styles.card2}>
-                        <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-                        <Text style={styles.text}>
-                            Is this safe?
-                        </Text>
-                        <Icon type='font-awesome-5' name={this.getChevron()} style={styles.icon} color="white"/>
-                        </View>
-                    </Card>
-                    }
-                    onPress={() => this.onExpand()}
-                >
-                    <Card style={styles.expandedCard}>
-                    <Text style={styles.expandedText}>
-                        {'Absolutely. Opening a bank account is free and easy. It will also not impact your credit score.'}
-                    </Text>
-                    </Card>
-                </ExpandableSection>
+
 
 
             </ScrollView>
