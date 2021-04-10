@@ -64,7 +64,7 @@ export default class MyOfferInfo extends React.Component {
                                 <Card containerStyle={{width: 50, height: 50, backgroundColor:'#cfe2cf', marginLeft: 10}}>
                                     <Icon type='font-awesome-5' name={'coins'} size={30} color="#437043" style={{textAlign: 'center', marginTop: 10}}/>
                                 </Card>
-                                <Text style={{fontSize: 20, fontWeight: 'bold', marginTop: 15, color: '#437043', marginLeft: 20}}>Accounts</Text>
+                                <Text style={{fontSize: 20, fontWeight: 'bold', marginTop: 15, color: '#015401', marginLeft: 20}}>Accounts</Text>
                             </View>
                             <FontAwesome name="chevron-right" size={30} color="#437043" style={{marginTop: 10, marginRight: 20}}/>
                         </View>

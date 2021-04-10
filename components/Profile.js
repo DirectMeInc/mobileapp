@@ -1,5 +1,5 @@
 import React, { Component, useContext } from 'react';
-import {ScrollView, StyleSheet} from 'react-native';
+import {ScrollView, StyleSheet, Alert} from 'react-native';
 import { View, Image, Text, Button, Colors, PanningProvider, Dialog, Constants, Slider, Card, Avatar } from 'react-native-ui-lib';
 import Header from './Header';
 import ActionBarHome from './ActionBar';
@@ -32,13 +32,13 @@ export default class Profile extends React.Component {
                 </View>
 
                 <View style={{marginTop: 15, flexDirection: 'row', justifyContent: 'center'}}>
-                        <Card containerStyle={{width: '93%', borderRadius:10, backgroundColor:'#eff5ef'}}>
+                        <Card containerStyle={{width: '93%', borderRadius:10, backgroundColor:'#eff5ef'}} onPress={() => Alert.alert('We have sent an email to user@email.com')}>
                         <View style={{flexDirection:'row', marginTop: 20, marginBottom: 20, justifyContent: 'space-between'}}>
                             <View style={{flexDirection:'row'}}>
                                 <Card containerStyle={{width: 50, height: 50, backgroundColor:'#cfe2cf', marginLeft: 10}}>
                                     <FontAwesome name="lock" size={30} color="#437043" style={{textAlign: 'center', marginTop: 10}}/>
                                 </Card>
-                                <Text style={{fontSize: 20, fontWeight: 'bold', marginTop: 15, color: '#00004d', marginLeft: 20}}>Password</Text>
+                                <Text style={{fontSize: 20, fontWeight: 'bold', marginTop: 15, color: '#015401', marginLeft: 20}}>Change Password</Text>
                             </View>
                             <FontAwesome name="chevron-right" size={30} color="#437043" style={{marginTop: 10, marginRight: 20}}/>
                         </View>
