@@ -1,5 +1,5 @@
 import React from 'react';
-import {FlatList, ScrollView, StyleSheet, Alert} from 'react-native';
+import {FlatList, ScrollView, StyleSheet, Alert, TouchableOpacity} from 'react-native';
 import { View, Image, Text, Button, Colors, PanningProvider, Dialog, Constants, Slider, Card } from 'react-native-ui-lib';
 import Icons from 'react-native-vector-icons/MaterialIcons';
 import Header from './Header';
@@ -7,12 +7,25 @@ import ActionBarHome from './ActionBar';
 import { FontAwesome } from '@expo/vector-icons';
 
 export default class OfferPage extends React.Component {
+
+    constructor(props){
+        super(props);
+        this.state  = {
+        }
+        this.handleBackButtonClick = this.handleBackButtonClick.bind(this);
+
+    }
+
+    handleBackButtonClick() {
+        this.props.navigation.goBack(null);
+        return true;
+    }
     render() {
         const { navigate } = this.props.navigation;
         return (
             <View style={{ flex: 1, backgroundColor: '#25315C'}}>
             <View style={{ flexDirection: 'column', marginBottom: 0, paddingBottom: 0 }}>
-            <ScrollView style={{ marginBottom: 130, paddingTop: 10 }}>
+            <ScrollView style={{ marginBottom: 95, paddingTop: 10 }}>
                 <Header></Header>
 
                 <View style={{flexDirection: 'column'}}>
@@ -24,10 +37,11 @@ export default class OfferPage extends React.Component {
                     <Card
                         key={1}
                         style={{ marginBottom: 20, width: '90%' }}
+                        containerStyle={{backgroundColor:'#e8effc'}}
                         borderRadius={20}
                         marginH-19
                     >
-                        <View padding-20 borderRadius={20} backgroundColor='#e8effc'>
+                        <View padding-20 borderRadius={20}>
                             <Text text40 color={Colors.grey10} marginV-8>
                                 Qualifications  <FontAwesome name="file-text-o" size={24} color="black" />
                         </Text>
@@ -42,14 +56,27 @@ export default class OfferPage extends React.Component {
                     </Card>
                 </View>
 
-                <View style={{flexDirection:'row', justifyContent: 'center', alignItems: 'center', marginTop: 10}}>
+
+
+
+
+
+
+
+
+
+
+
+
+                <View style={{flexDirection:'row', justifyContent: 'center', alignItems: 'center', marginTop: 5}}>
                     <Card
                         key={1}
                         style={{ marginBottom: 20, width: '90%' }}
+                        containerStyle={{backgroundColor:'#e8effc'}}
                         borderRadius={20}
                         marginH-19
                     >
-                        <View padding-20 borderRadius={20} backgroundColor='#e8effc'>
+                        <View padding-20 borderRadius={20}>
                             <Text text40 color={Colors.grey10} marginV-8>
                                 Eligible Accounts  <FontAwesome name="user-circle" size={24} color="black" />
                         </Text>
@@ -59,7 +86,7 @@ export default class OfferPage extends React.Component {
                             </Text>
                         </View>
                     </Card>
-                </View>
+                </View> 
 
 {/*                     <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginTop: 50}}>
                         <Text style={{ fontSize: 20, color: 'white', fontWeight: 'bold', position: 'absolute'}}>   
@@ -91,16 +118,17 @@ export default class OfferPage extends React.Component {
                     </Text> 
                     </View> */}
 
-                    <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginTop: 20}}>
-                    <Button
-                        backgroundColor='#1EAD69'
-                        label="How do I start?"
-                        marginR-5
-                        labelStyle={{ fontWeight: '600', fontSize: 20 }}
-                        style={{ width: 200 }}
-                        enableShadow
-                        onPress={() => navigate('Onboarding')}
-                    />
+                    <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginTop: 10}}>
+                        <Button
+                            backgroundColor="#25315C"
+                            outlineColor='white'
+                            label="How do I start?"
+                            marginR-5
+                            labelStyle={{ fontWeight: '600', fontSize: 20, color: 'white' }}
+                            style={{ width: 200 }}
+                            borderRadius={10}
+                            onPress={() => navigate('Onboarding')}
+                        />
                     </View>
 
                 </View>

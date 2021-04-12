@@ -370,8 +370,9 @@ export default class FindOffers extends React.Component {
                         ]}
                         defaultValue={this.state.state}
                         placeholder="Sort By"
+                        placeholderStyle={{color: 'white', fontWeight: 'bold'}}
                         containerStyle={{height: 40}}
-                        style={{backgroundColor: '#fafafa', width: '100%'}}
+                        style={{backgroundColor: '#25315C', width: '100%', color: 'white'}}
                         itemStyle={{
                             justifyContent: 'flex-start'
                         }}
@@ -379,6 +380,11 @@ export default class FindOffers extends React.Component {
                         onChangeItem={item => this.setState({
                             state: item.value
                         })}
+                        arrowColor='white'
+                        selectedLabelStyle={{
+                          color: 'white', 
+                          fontWeight: 'bold'
+                      }}
                 />
                 <View style={{flexDirection:'row', justifyContent: 'center', alignItems: 'center', textAlign:'center', marginTop:20}}>
                     <Card

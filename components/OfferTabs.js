@@ -5,8 +5,8 @@ import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
 import Icons from 'react-native-vector-icons/MaterialIcons';
 
 const FirstRoute = () => (
-    <View style={{ flex: 1, backgroundColor: '#25315C' }}>
-        <Card containerStyle={{width: '95%', borderRadius: 10, backgroundColor:'#C4C4C4', marginLeft: 10, marginTop: 10}}>
+    <View style={{flexDirection:'row', justifyContent: 'center', alignItems: 'center'}}>
+        <Card containerStyle={{width: '95%', borderRadius: 10, backgroundColor:'#C4C4C4', marginTop: 10}}>
         <View style={{flexDirection:'row', marginTop: 20}}>
             <Icons name='account-balance' style={{ fontSize: 40, color: '#117ACA', marginLeft: 20 }}></Icons>
             <Text style={{fontSize: 30, fontWeight: 'bold', marginLeft:20}}>Savings</Text>
@@ -21,8 +21,8 @@ const FirstRoute = () => (
 );
   
 const SecondRoute = () => (
-    <View style={{ flex: 1, backgroundColor: '#25315C' }}>
-        <Card containerStyle={{width: '95%', borderRadius:10, backgroundColor:'#C4C4C4', marginLeft: 10, marginTop: 10}}>
+    <View style={{flexDirection:'row', justifyContent: 'center', alignItems: 'center'}}>
+        <Card containerStyle={{width: '95%', borderRadius:10, backgroundColor:'#C4C4C4', marginTop: 10}}>
         <View style={{flexDirection:'row', marginTop: 20}}>
             <Image
                 style={{ width: 50,

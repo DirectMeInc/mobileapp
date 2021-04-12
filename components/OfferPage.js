@@ -72,10 +72,6 @@ export default class OfferPage extends React.Component {
 
                 <OfferTabs></OfferTabs>
 
-                <TouchableOpacity onPress={this.handleBackButtonClick}>
-                    <Icons name='arrow-back-ios' size={30} color='#fff' style={{marginLeft: '3%', marginBottom: 80, marginLeft: 20}}/>
-                </TouchableOpacity>
-
             <ActionBarHome></ActionBarHome>
             </View>
         )

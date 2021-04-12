@@ -9,19 +9,6 @@ import { Icon } from 'react-native-elements';
 
 export default class MyOfferInfoRewards extends React.Component {
 
-    constructor(props){
-        super(props);
-        this.state  = {
-        }
-        this.handleBackButtonClick = this.handleBackButtonClick.bind(this);
-
-    }
-
-    handleBackButtonClick() {
-        this.props.navigation.goBack(null);
-        return true;
-    }
-
     render() {
         return(
             <View style={{ flex: 1, backgroundColor: '#25315C'}}>
@@ -46,21 +33,13 @@ export default class MyOfferInfoRewards extends React.Component {
                     </View>
 
                     <View style={{marginTop: 25, flexDirection: 'row', justifyContent: 'center'}}>
-                        <Card containerStyle={{width: '93%', borderRadius:10, backgroundColor:'#ffece6'}}>
-                        <View style={{flexDirection:'row', marginTop: 20, marginBottom: 20, justifyContent: 'space-between'}}>
-                            <View style={{flexDirection:'row'}}>
-                                <Card containerStyle={{width: 50, height: 50, backgroundColor:'#ffdacc', marginLeft: 10}}>
-                                    <Icon type='font-awesome-5' name={'trophy'} size={30} color="#ff571a" style={{textAlign: 'center', marginTop: 10}}/>
-                                </Card>
-                                <Text style={{fontSize: 20, fontWeight: 'bold', marginTop: 15, color: '#ff571a', marginLeft: 20}}>Reward of $300.00</Text>
-                            </View>
+                        <Card containerStyle={{width: '93%', borderRadius:10, backgroundColor:'#C4C4C4', height: 80}}>
+                        <View style={{flexDirection:'row', marginTop: 20}}>
+                                <Icon type='font-awesome-5' name={'trophy'} size={30} style={{textAlign: 'center', marginLeft: 20}}/>
+                                <Text style={{fontSize: 20,  marginTop: 5, marginLeft: 20}}>Reward of $300.00</Text>
                         </View>
                         </Card>
                     </View> 
-
-                    <TouchableOpacity onPress={this.handleBackButtonClick}>
-                        <Icons name='arrow-back-ios' size={30} color='#fff' style={{marginLeft: '3%', marginTop: 230, marginLeft: 20}}/>
-                    </TouchableOpacity>
 
                 <ActionBarHome></ActionBarHome>
 

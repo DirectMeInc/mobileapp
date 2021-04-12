@@ -9,19 +9,6 @@ import Icons from 'react-native-vector-icons/MaterialIcons';
 
 export default class MyOfferInfo extends React.Component {
 
-    constructor(props){
-        super(props);
-        this.state  = {
-        }
-        this.handleBackButtonClick = this.handleBackButtonClick.bind(this);
-
-    }
-
-    handleBackButtonClick() {
-        this.props.navigation.goBack(null);
-        return true;
-    }
-
     render() {
         const { navigate } = this.props.navigation;
         return (
@@ -84,10 +71,6 @@ export default class MyOfferInfo extends React.Component {
                         </View>
                         </Card>
                 </View> 
-
-                <TouchableOpacity onPress={this.handleBackButtonClick}>
-                        <Icons name='arrow-back-ios' size={30} color='#fff' style={{marginLeft: '3%', marginLeft: 20, marginTop: 40}}/>
-                </TouchableOpacity>
 
                 <ActionBarHome></ActionBarHome>
             </View>

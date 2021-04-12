@@ -9,19 +9,6 @@ import Icons from 'react-native-vector-icons/MaterialIcons';
 
 export default class MyOfferInfoTasks extends React.Component {
 
-    constructor(props){
-        super(props);
-        this.state  = {
-        }
-        this.handleBackButtonClick = this.handleBackButtonClick.bind(this);
-
-    }
-
-    handleBackButtonClick() {
-        this.props.navigation.goBack(null);
-        return true;
-    }
-
     render() {
         return(
             <View style={{ flex: 1, backgroundColor: '#25315C'}}>
@@ -45,10 +32,6 @@ export default class MyOfferInfoTasks extends React.Component {
                         <Text style={{fontSize: 25, color: 'white', fontWeight: 'bold'}}>Tasks</Text>
                     </View>
                     <MyOfferInfoTaskTabs/>
-
-                    <TouchableOpacity onPress={this.handleBackButtonClick}>
-                        <Icons name='arrow-back-ios' size={30} color='#fff' style={{marginLeft: '3%', marginBottom: 80, marginLeft: 20}}/>
-                    </TouchableOpacity>
 
                 <ActionBarHome></ActionBarHome>
 

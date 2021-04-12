@@ -29,7 +29,7 @@ export default class Profile extends PureComponent {
     renderRadioButton(id, text) {
         return (
           <View row centerV marginB-5>
-            <RadioButton value={id} label={text}/>
+            <RadioButton value={id} label={text} size={15}/>
           </View>
         );
       }
@@ -53,8 +53,8 @@ export default class Profile extends PureComponent {
             <View style={{ flex: 1, backgroundColor: '#25315C'}}>
                 <Header></Header>
                 <View style={{ ...styles.centering, marginTop: 20 }}>
-                    <Avatar size={150} label='JD' labelColor={Colors.orange30} backgroundColor='#ffdfc2' />
-                    <Text text40 color='white' marginT-20>
+                    <Avatar size={150} label='JD' labelColor='white' backgroundColor='#44589F' outlineColor="white" />
+                    <Text color="white" style={{fontSize:25, marginTop: 12}}>
                         Jane Doe
                     </Text>
                 </View>
