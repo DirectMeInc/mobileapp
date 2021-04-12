@@ -20,18 +20,14 @@ export default class AccountInfo extends React.Component {
         return (
             <ListItem
               height={60.5}
-              containerStyle={{backgroundColor:"#f2f2f2"}}
+              containerStyle={{backgroundColor:"#25315C"}}
             >
               <ListItem.Part left>
-                <Image
-                  source={{uri: row.mediaUrl}}
-                  style={styles.image}
-                />
               </ListItem.Part>
               <ListItem.Part middle column containerStyle={[styles.border, {paddingRight: 17}]}>
                 <ListItem.Part containerStyle={{marginBottom: 3}}>
-                  <Text style={{flex: 1, marginLeft: 10, fontWeight: 'bold', color: 'darkblue'}} numberOfLines={1}>{row.name}</Text>
-                  <Text style={{marginTop: 2, fontSize: 12, color: 'red'}}>{row.amount}</Text>
+                  <Text style={{flex: 1, marginLeft: 10, fontWeight: 'bold', color: 'white'}} numberOfLines={1}>{row.name}</Text>
+                  <Text style={{marginTop: 2, fontSize: 13, color: 'white'}}>{row.amount}</Text>
                 </ListItem.Part>
                 <ListItem.Part>
                   <Text style={{flex: 1, marginLeft: 10}} text90 dark40 numberOfLines={1}>{row.time}</Text>
@@ -90,7 +86,14 @@ export default class AccountInfo extends React.Component {
 
                     <Text style={{fontSize: 25, fontWeight: 'bold', color: '#6F8CF6', marginTop: 30, marginLeft:20}}>Transactions</Text>
 
-                    <Text style={{fontSize: 15, fontWeight: 'bold', color: '#dcdcdc', marginTop: 30, marginLeft:20, marginBottom: 10}}>Today</Text>
+                    <Text style={{fontSize: 15, fontWeight: 'bold', color: '#2BF594', marginTop: 30, marginLeft:20, marginBottom: 15}}>Today</Text>
+
+                    <View
+                        style={{
+                            borderBottomColor: 'white',
+                            borderBottomWidth: 0.2,
+                        }}
+                    />
                 </View>
                 }
                 data={orders}
