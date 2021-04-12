@@ -12,6 +12,11 @@ import AccountsScreen from './components/Accounts';
 import AccountInfoScreen from './components/AccountInfo';
 import StartOfferScreen from './components/StartOffer';
 import OnboardingScreen from './components/Onboarding';
+import ProfileScreen from './components/Profile';
+import MyOfferInfoScreen from './components/MyOfferInfo';
+import MyOfferInfoTasksScreen from './components/MyOfferInfoTasks';
+import MyOfferInfoAccountsScreen from './components/MyOfferInfoAccounts';
+import MyOfferInfoRewardsScreen from './components/MyOfferInfoRewards';
 const Stack = createStackNavigator()
 
 function MainStackNavigator() {
@@ -85,6 +90,31 @@ function MainStackNavigator() {
                 <Stack.Screen
                     name='AccountInfo'
                     component={AccountInfoScreen}
+                    options={{ headerShown: false }}
+                />
+                <Stack.Screen
+                    name='Profile'
+                    component={ProfileScreen}
+                    options={{ headerShown: false }}
+                />
+                <Stack.Screen
+                    name='MyOfferInfo'
+                    component={MyOfferInfoScreen}
+                    options={{ headerShown: false }}
+                />
+                <Stack.Screen
+                    name='MyOfferInfoTasks'
+                    component={MyOfferInfoTasksScreen}
+                    options={{ headerShown: false }}
+                />
+                <Stack.Screen
+                    name='MyOfferInfoAccounts'
+                    component={MyOfferInfoAccountsScreen}
+                    options={{ headerShown: false }}
+                />
+                <Stack.Screen
+                    name='MyOfferInfoRewards'
+                    component={MyOfferInfoRewardsScreen}
                     options={{ headerShown: false }}
                 />
             </Stack.Navigator>
