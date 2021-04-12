@@ -85,7 +85,7 @@ export default class AccountInfo extends React.Component {
                     </View>
 
                     <View style={{flexDirection:'row', marginTop: 30, justifyContent: 'center', alignItems: 'center'}}>
-                        <Text style={{fontSize: 20, fontWeight: 'bold', color: 'white'}}>Current Balance: <Text style={{fontSize: 20, color: '#6F8CF6', fontWeight:'normal'}}>-$100.00</Text></Text>
+                        <Text style={{fontSize: 20, fontWeight: 'bold', color: 'white'}}>Current Balance: <Text style={{fontSize: 20, color: '#6F8CF6', fontWeight:'bold'}}>-$100.00</Text></Text>
                     </View>
 
                     <Text style={{fontSize: 25, fontWeight: 'bold', color: '#6F8CF6', marginTop: 30, marginLeft:20}}>Transactions</Text>
@@ -95,6 +95,7 @@ export default class AccountInfo extends React.Component {
                 }
                 data={orders}
                 renderItem={({item, index}) => this.renderRow(item, index)}
+                keyExtractor={(item, index) => index.toString()}
                 />
                 <ActionBarHome></ActionBarHome>
             </View>

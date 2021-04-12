@@ -25,7 +25,7 @@ export default class OfferPage extends React.Component {
         return (
             <View style={{ flex: 1, backgroundColor: '#25315C'}}>
             <View style={{ flexDirection: 'column', marginBottom: 0, paddingBottom: 0 }}>
-            <ScrollView style={{ marginBottom: 95, paddingTop: 10 }}>
+            <ScrollView style={{ marginBottom: 145, paddingTop: 10 }}>
                 <Header></Header>
 
                 <View style={{flexDirection: 'column'}}>
