@@ -8,8 +8,8 @@ const FirstRoute = () => (
     <View style={{ flex: 1, backgroundColor: '#25315C' }}>
         <Card containerStyle={{width: '95%', borderRadius: 10, backgroundColor:'#C4C4C4', marginLeft: 10, marginTop: 10}}>
         <View style={{flexDirection:'row', marginTop: 20}}>
-            <Icons name='account-balance' style={{ fontSize: 40, color: '#117ACA', marginLeft: 20 }}></Icons>
-            <Text style={{fontSize: 30, fontWeight: 'bold', marginLeft:20}}>Savings</Text>
+            <Icons name='account-balance' style={{ fontSize: 40, color: '#000099', marginLeft: 20 }}></Icons>
+            <Text style={{fontSize: 30, fontWeight: 'bold', marginLeft:10, marginTop: 2}}>Savings</Text>
         </View>
         <View style={{flexDirection:'column', marginTop: 20, marginLeft: 20}}>
             <Text style={{fontSize: 15}}>Maintain savings of at least $15,000.</Text>
