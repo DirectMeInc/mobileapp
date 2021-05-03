@@ -12,9 +12,9 @@ export default class MyOffers extends React.Component {
             <View style={{ flex: 1, backgroundColor: '#25315C'}}>
                 <Header></Header>
                 <View style={{ flexDirection:'row', marginTop: 30}}>
-                    <Text style={{ fontSize: 30, color: '#2BF594', fontWeight: 'bold', position: 'absolute', marginLeft:20, marginRight:30}}>   
+                    <Text style={{ fontSize: 30, color: '#2BF594', fontWeight: 'bold', position: 'absolute', marginLeft:20, marginRight:30}}>
                         My Offers
-                    </Text> 
+                    </Text>
                 </View>
                 <TabOffers></TabOffers>
                 <ActionBarHome></ActionBarHome>

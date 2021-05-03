@@ -5,22 +5,23 @@ import Header from './Header';
 import ActionBarHome from './ActionBar';
 
 export default class Accounts extends React.Component {
+    navigate = this.props.navigation;
+
     render() {
-        const { navigate } = this.props.navigation;
         return (
             <View style={{ flex: 1, backgroundColor: '#25315C'}}>
             <View style={{ flexDirection: 'column', marginBottom: 0, paddingBottom: 0 }}>
                 <ScrollView style={{ marginBottom: 80, paddingTop: 10 }}>
                 <Header></Header>
                 <View style={{ flexDirection:'row', marginTop: 30}}>
-                    <Text style={{ fontSize: 30, color: '#2BF594', fontWeight: 'bold', position: 'absolute', marginLeft:20, marginRight:30}}>   
+                    <Text style={{ fontSize: 30, color: '#2BF594', fontWeight: 'bold', position: 'absolute', marginLeft:20, marginRight:30}}>
                         My Accounts
-                    </Text> 
+                    </Text>
                 </View>
 
 
                     <View style={{ flex: 1, backgroundColor: '#25315C', marginTop: 50, marginLeft: 20}}>
-                        <Card containerStyle={{width: '93%', borderRadius:10, backgroundColor:'#C4C4C4'}} onPress={() => navigate('AccountInfo')}>
+                        <Card containerStyle={{width: '93%', borderRadius:10, backgroundColor:'white'}} onPress={() => navigate('AccountInfo')}>
                         <View style={{flexDirection:'row', marginTop: 20}}>
                             <Image
                                 style={{ width: 50,

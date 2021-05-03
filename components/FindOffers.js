@@ -12,13 +12,13 @@ export default class FindOffers extends React.Component {
 
     constructor(props) {
         super(props);
-    
+
         this.SCROLL_TYPE = {
           NONE: 'none',
           VERTICAL: 'vertical',
           HORIZONTAL: 'horizontal'
         };
-    
+
         this.pannableTitle = {title: 'Filter By'};
         this.title = 'This is a Dialog';
         this.supportedOrientations = ['portrait', 'landscape'];
@@ -44,7 +44,7 @@ export default class FindOffers extends React.Component {
           {value: Colors.yellow50, label: 'Yellow50'},
           {value: Colors.yellow70, label: 'Yellow70'}
         ];
-    
+
         this.state = {
           state: null,
           bank: null,
@@ -77,45 +77,45 @@ export default class FindOffers extends React.Component {
       onSliderValueChange3 = (value) => {
         this.setState({sliderValue3: value});
       }
-    
+
       setPanDirection = panDirection => {
         if (panDirection !== this.state.panDirection) {
           this.setState({panDirection});
         }
       };
-    
+
       setPosition = position => {
         if (position !== this.state.position) {
           this.setState({position});
         }
       };
-    
+
       setScroll = scroll => {
         if (scroll !== this.state.scroll) {
           this.setState({scroll});
         }
       };
-    
+
       toggleShowHeader = () => {
         this.setState({
           showHeader: !this.state.showHeader
         });
       };
-    
+
       toggleIsRounded = () => {
         this.setState({
           isRounded: !this.state.isRounded
         });
       };
-    
+
       showDialog = () => {
         this.setState({showDialog: true});
       };
-    
+
       hideDialog = () => {
         this.setState({showDialog: false});
       };
-    
+
       renderPannableHeader = props => {
         const {title} = props;
         return (
@@ -127,7 +127,7 @@ export default class FindOffers extends React.Component {
           </View>
         );
       };
-    
+
       renderPlainContent = () => {
         return (
           <View margin-20 right>
@@ -135,11 +135,11 @@ export default class FindOffers extends React.Component {
           </View>
         );
       };
-    
+
       keyExtractor = item => {
         return item.value;
       };
-    
+
       renderVerticalItem = ({item: color}) => {
         return (
           <Text text50 margin-20 color={color.value}>
@@ -147,7 +147,7 @@ export default class FindOffers extends React.Component {
           </Text>
         );
       };
-    
+
       renderVerticalScroll = () => {
         return (
           <FlatList
@@ -159,11 +159,11 @@ export default class FindOffers extends React.Component {
           />
         );
       };
-    
+
       renderHorizontalItem = ({item: color}) => {
         return <View flex width={100} height={1000} style={{backgroundColor: color.value}}/>;
       };
-    
+
       renderHorizontalScroll = () => {
         return (
           <View marginT-20 pointerEvents="box-none">
@@ -182,10 +182,10 @@ export default class FindOffers extends React.Component {
           </View>
         );
       };
-    
+
       renderContent = () => {
         const {scroll, showHeader} = this.state;
-    
+
         let content;
         switch (scroll) {
           case this.SCROLL_TYPE.VERTICAL:
@@ -199,7 +199,7 @@ export default class FindOffers extends React.Component {
             content = this.renderPlainContent();
             break;
         }
-    
+
         const data = (
           <View spread flex={scroll !== this.SCROLL_TYPE.NONE}>
             <View marginT-20 marginH-20>
@@ -244,12 +244,12 @@ export default class FindOffers extends React.Component {
 
             <Text style={{marginLeft: 20, marginTop: 25, fontSize: 15}}>Savings Required</Text>
             <View row centerV style={{marginTop: 20}}>
-                <Slider 
-                    onValueChange={this.onSliderValueChange1} 
-                    value={INITIAL_VALUE} 
-                    minimumValue={0} 
-                    maximumValue={10000} 
-                    step={100} 
+                <Slider
+                    onValueChange={this.onSliderValueChange1}
+                    value={INITIAL_VALUE}
+                    minimumValue={0}
+                    maximumValue={10000}
+                    step={100}
                     containerStyle={styles.sliderContainer}
                 />
                 <Text bodySmall grey30 style={styles.text}>${this.state.sliderValue1}</Text>
@@ -257,12 +257,12 @@ export default class FindOffers extends React.Component {
 
             <Text style={{marginLeft: 20, marginTop: 25, fontSize: 15}}>Monthly Direct Deposits Required</Text>
             <View row centerV style={{marginTop: 20}}>
-                <Slider 
-                    onValueChange={this.onSliderValueChange2} 
-                    value={INITIAL_VALUE} 
-                    minimumValue={0} 
-                    maximumValue={4000} 
-                    step={100} 
+                <Slider
+                    onValueChange={this.onSliderValueChange2}
+                    value={INITIAL_VALUE}
+                    minimumValue={0}
+                    maximumValue={4000}
+                    step={100}
                     containerStyle={styles.sliderContainer}
                 />
                 <Text bodySmall grey30 style={styles.text}>${this.state.sliderValue2}</Text>
@@ -270,12 +270,12 @@ export default class FindOffers extends React.Component {
 
             <Text style={{marginLeft: 20, marginTop: 25, fontSize: 15}}>Monthly Debit Purchases Required</Text>
             <View row centerV style={{marginTop: 20}}>
-                <Slider 
-                    onValueChange={this.onSliderValueChange3} 
-                    value={INITIAL_VALUE} 
-                    minimumValue={0} 
-                    maximumValue={100} 
-                    step={10} 
+                <Slider
+                    onValueChange={this.onSliderValueChange3}
+                    value={INITIAL_VALUE}
+                    minimumValue={0}
+                    maximumValue={100}
+                    step={10}
                     containerStyle={styles.sliderContainer}
                 />
                 <Text bodySmall grey30 style={styles.text}>{this.state.sliderValue3}</Text>
@@ -297,20 +297,20 @@ export default class FindOffers extends React.Component {
 
 
         );
-    
+
         return data;
       };
-    
+
       getDialogKey = height => {
         const {position} = this.state;
         return `dialog-key-${position}-${height}`;
       };
-    
+
       renderDialog = () => {
         const {showDialog, panDirection, position, scroll, showHeader, isRounded} = this.state;
         const renderPannableHeader = showHeader ? this.renderPannableHeader : undefined;
         const height = scroll !== this.SCROLL_TYPE.NONE ? '70%' : undefined;
-    
+
         return (
           <Dialog
             migrate
@@ -342,9 +342,9 @@ export default class FindOffers extends React.Component {
                 <Header></Header>
 
             <View style={{ display: 'flex', flexDirection:'row', marginTop: 30 }}>
-                <Text style={{ fontSize: 30, color: '#2BF594', fontWeight: 'bold', position: 'absolute', marginLeft:20, marginRight:30}}>   
-                    Find Offers 
-                </Text> 
+                <Text style={{ fontSize: 30, color: '#2BF594', fontWeight: 'bold', position: 'absolute', marginLeft:20, marginRight:30}}>
+                    Find Offers
+                </Text>
                 <Button
                         backgroundColor="#25315C"
                         label="Filter"
@@ -355,7 +355,7 @@ export default class FindOffers extends React.Component {
                         onPress={this.showDialog}
                 />
             </View>
-            <View style={{ marginTop: 30, marginLeft:20, marginRight:30}}>
+            <View style={{ display: 'flex', flexDirection:'column', alignItems: 'center', marginTop: 30, marginLeft:30, marginRight:30}}>
                 <DropDownPicker
                         items={[
                             {label: 'Recommended', value: 'Recommended'},
@@ -382,16 +382,14 @@ export default class FindOffers extends React.Component {
                         })}
                         arrowColor='white'
                         selectedLabelStyle={{
-                          color: 'white', 
+                          color: 'white',
                           fontWeight: 'bold'
                       }}
                 />
-                <View style={{flexDirection:'row', justifyContent: 'center', alignItems: 'center', textAlign:'center', marginTop:20}}>
                     <Card
                         height={120}
-                        width='45%'
-                        containerStyle={{backgroundColor:'#C4C4C4',flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}}
-                        onPress={() => navigate('OfferPage')}
+                        width='95%'
+                        containerStyle={{backgroundColor:'white', marginTop: 30, flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}}
                     >
 
                         <Card.Section imageSource={{uri: 'https://i.pinimg.com/originals/70/4a/1e/704a1e534e8dc0138eee3ded449555d5.png'}} imageStyle={{width: 50, height: 50, marginTop: 10}}/>
@@ -403,11 +401,10 @@ export default class FindOffers extends React.Component {
                             contentStyle={{marginBottom: 10, marginTop: 10, alignItems: 'center'}}
                         />
                     </Card>
-
                     <Card
                         height={120}
-                        width='45%'
-                        containerStyle={{backgroundColor:'#C4C4C4',flexDirection: 'column', alignItems: 'center', justifyContent: 'center', marginLeft: 20}}
+                        width='95%'
+                        containerStyle={{backgroundColor:'white', marginTop: 30, flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}}
                     >
 
                         <Card.Section imageSource={{uri: 'https://i.pinimg.com/originals/70/4a/1e/704a1e534e8dc0138eee3ded449555d5.png'}} imageStyle={{width: 50, height: 50, marginTop: 10}}/>
@@ -419,13 +416,10 @@ export default class FindOffers extends React.Component {
                             contentStyle={{marginBottom: 10, marginTop: 10, alignItems: 'center'}}
                         />
                     </Card>
-                </View>
-
-                <View style={{flexDirection:'row', justifyContent: 'center', alignItems: 'center', textAlign:'center', marginTop:20}}>
                     <Card
                         height={120}
-                        width='45%'
-                        containerStyle={{backgroundColor:'#C4C4C4',flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}}
+                        width='95%'
+                        containerStyle={{backgroundColor:'white', marginTop: 30, flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}}
                     >
 
                         <Card.Section imageSource={{uri: 'https://i.pinimg.com/originals/70/4a/1e/704a1e534e8dc0138eee3ded449555d5.png'}} imageStyle={{width: 50, height: 50, marginTop: 10}}/>
@@ -437,93 +431,6 @@ export default class FindOffers extends React.Component {
                             contentStyle={{marginBottom: 10, marginTop: 10, alignItems: 'center'}}
                         />
                     </Card>
-
-                    <Card
-                        height={120}
-                        width='45%'
-                        containerStyle={{backgroundColor:'#C4C4C4',flexDirection: 'column', alignItems: 'center', justifyContent: 'center', marginLeft: 20}}
-                    >
-
-                        <Card.Section imageSource={{uri: 'https://i.pinimg.com/originals/70/4a/1e/704a1e534e8dc0138eee3ded449555d5.png'}} imageStyle={{width: 50, height: 50, marginTop: 10}}/>
-                        <Card.Section
-                            content={[
-                            {text: 'Chase', text70: true, grey10: true},
-                            {text: '$150 Savings', text80: true}
-                            ]}
-                            contentStyle={{marginBottom: 10, marginTop: 10, alignItems: 'center'}}
-                        />
-                    </Card>
-                </View>
-
-                <View style={{flexDirection:'row', justifyContent: 'center', alignItems: 'center', textAlign:'center', marginTop:20}}>
-                    <Card
-                        height={120}
-                        width='45%'
-                        containerStyle={{backgroundColor:'#C4C4C4',flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}}
-                    >
-
-                        <Card.Section imageSource={{uri: 'https://i.pinimg.com/originals/70/4a/1e/704a1e534e8dc0138eee3ded449555d5.png'}} imageStyle={{width: 50, height: 50, marginTop: 10}}/>
-                        <Card.Section
-                            content={[
-                            {text: 'Chase', text70: true, grey10: true},
-                            {text: '$150 Savings', text80: true}
-                            ]}
-                            contentStyle={{marginBottom: 10, marginTop: 10, alignItems: 'center'}}
-                        />
-                    </Card>
-
-                    <Card
-                        height={120}
-                        width='45%'
-                        containerStyle={{backgroundColor:'#C4C4C4',flexDirection: 'column', alignItems: 'center', justifyContent: 'center', marginLeft: 20}}
-                    >
-
-                        <Card.Section imageSource={{uri: 'https://i.pinimg.com/originals/70/4a/1e/704a1e534e8dc0138eee3ded449555d5.png'}} imageStyle={{width: 50, height: 50, marginTop: 10}}/>
-                        <Card.Section
-                            content={[
-                            {text: 'Chase', text70: true, grey10: true},
-                            {text: '$150 Savings', text80: true}
-                            ]}
-                            contentStyle={{marginBottom: 10, marginTop: 10, alignItems: 'center'}}
-                        />
-                    </Card>
-                </View>
-
-                <View style={{flexDirection:'row', justifyContent: 'center', alignItems: 'center', textAlign:'center', marginTop:20}}>
-                    <Card
-                        height={120}
-                        width='45%'
-                        containerStyle={{backgroundColor:'#C4C4C4',flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}}
-                    >
-
-                        <Card.Section imageSource={{uri: 'https://i.pinimg.com/originals/70/4a/1e/704a1e534e8dc0138eee3ded449555d5.png'}} imageStyle={{width: 50, height: 50, marginTop: 10}}/>
-                        <Card.Section
-                            content={[
-                            {text: 'Chase', text70: true, grey10: true},
-                            {text: '$150 Savings', text80: true}
-                            ]}
-                            contentStyle={{marginBottom: 10, marginTop: 10, alignItems: 'center'}}
-                        />
-                    </Card>
-
-                    <Card
-                        height={120}
-                        width='45%'
-                        containerStyle={{backgroundColor:'#C4C4C4',flexDirection: 'column', alignItems: 'center', justifyContent: 'center', marginLeft: 20}}
-                    >
-
-                        <Card.Section imageSource={{uri: 'https://i.pinimg.com/originals/70/4a/1e/704a1e534e8dc0138eee3ded449555d5.png'}} imageStyle={{width: 50, height: 50, marginTop: 10}}/>
-                        <Card.Section
-                            content={[
-                            {text: 'Chase', text70: true, grey10: true},
-                            {text: '$150 Savings', text80: true}
-                            ]}
-                            contentStyle={{marginBottom: 10, marginTop: 10, alignItems: 'center'}}
-                        />
-                    </Card>
-                </View>
-
-
             </View>
 
             {this.renderDialog()}

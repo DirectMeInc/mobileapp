@@ -1,8 +1,8 @@
 import React, {PureComponent} from 'react';
 import {ScrollView, StyleSheet, Alert} from 'react-native';
 import { View, Image, Text, Button, Colors, PanningProvider, Dialog, Constants, Slider, Card, Avatar, ExpandableSection, RadioButton, RadioGroup } from 'react-native-ui-lib';
-import Header from './Header';
-import ActionBarHome from './ActionBar';
+import Header from '../Header';
+import ActionBarHome from '../ActionBar';
 import { FontAwesome } from '@expo/vector-icons';
 import { Icon } from 'react-native-elements';
 
@@ -33,7 +33,7 @@ export default class Profile extends PureComponent {
           </View>
         );
       }
-    
+
     onExpand() {
         this.setState({
           expanded: !this.state.expanded
@@ -43,7 +43,7 @@ export default class Profile extends PureComponent {
     getChevron() {
         if (this.state.expanded) {
           return this.state.top ? 'sort-down' : 'sort-up';
-        } 
+        }
         return this.state.top ? 'sort-up' : 'sort-down';
     }
 
@@ -61,7 +61,7 @@ export default class Profile extends PureComponent {
 
 
                 <ExpandableSection
-                    
+
                     top={top}
                     expanded={expanded}
                     sectionHeader={
@@ -130,7 +130,7 @@ const styles = StyleSheet.create({
         marginTop: 15,
         marginRight: 20,
       },
-  
+
       card: {
           marginTop: 60,
           backgroundColor: '#5165AA',
@@ -146,7 +146,7 @@ const styles = StyleSheet.create({
           fontSize: 17,
           fontWeight: 'bold'
       },
-  
+
       expandedCard: {
           backgroundColor: '#5165AA',
           width: '90%',
@@ -155,7 +155,7 @@ const styles = StyleSheet.create({
           marginTop: -20,
           marginLeft: 20,
       },
-  
+
       expandedText: {
           color: 'white',
           marginTop: 30,

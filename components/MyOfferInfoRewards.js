@@ -33,7 +33,7 @@ export default class MyOfferInfoRewards extends React.Component {
                     </View>
 
                     <View style={{marginTop: 25, flexDirection: 'row', justifyContent: 'center'}}>
-                        <Card containerStyle={{width: '93%', borderRadius:10, backgroundColor:'#C4C4C4', height: 80}}>
+                        <Card containerStyle={{width: '93%', borderRadius:10, backgroundColor:'white', height: 80}}>
                         <View style={{flexDirection:'row', marginTop: 20}}>
                                 <Icon type='font-awesome-5' name={'trophy'} size={30} style={{textAlign: 'center', marginLeft: 20}} color={'#c8981e'}/>
                                 <Text style={{fontSize: 20,  marginTop: 5, marginLeft: 20, fontWeight: 'bold'}}>Reward of $300.00</Text>

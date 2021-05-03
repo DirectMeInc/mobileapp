@@ -1,21 +1,31 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { ActionBar, View, Text, Button } from 'react-native-ui-lib';
 import { Icon } from 'react-native-elements';
 
 export default function ActionBarHome() {
 
-    const navigation = useNavigation(); 
-    
+    const navigation = useNavigation();
+
     return (
         <View style={styles.bar}>
             <View style={styles.iconRow}>
-                <Icon type='font-awesome-5' name={'coins'} size={24} color="white" onPress={() => navigation.navigate('MyOffers')}/>
-                <Icon type='font-awesome-5' name={'chart-bar'} size={24} color="white" onPress={() => navigation.navigate('Accounts')}/>
-                <Icon type='font-awesome-5' name={'search-dollar'} size={24} color="white" onPress={() => navigation.navigate('FindOffers')}/>
-                <Icon type='font-awesome-5' name={'question-circle'} size={24} color="white" onPress={() => navigation.navigate('FAQ')} />
-                <Icon type='font-awesome-5' name={'user-circle'} size={24} color="white" onPress={() => navigation.navigate('Profile')} />
+              <TouchableOpacity onPress={() => navigation.navigate('MyOffers')} hitSlop={{top: 20, bottom: 20, left: 20, right: 20}}>
+                <Icon type='font-awesome-5' name={'coins'} size={24} color="white"/>
+              </TouchableOpacity>
+              <TouchableOpacity onPress={() => navigation.navigate('Accounts')} hitSlop={{top: 20, bottom: 20, left: 20, right: 20}}>
+                <Icon type='font-awesome-5' name={'chart-bar'} size={24} color="white"/>
+              </TouchableOpacity>
+              <TouchableOpacity onPress={() => navigation.navigate('FindOffers')} hitSlop={{top: 20, bottom: 20, left: 20, right: 20}}>
+                <Icon type='font-awesome-5' name={'search-dollar'} size={24} color="white"/>
+              </TouchableOpacity>
+              <TouchableOpacity onPress={() => navigation.navigate('FAQ')} hitSlop={{top: 20, bottom: 20, left: 20, right: 20}}>
+                <Icon type='font-awesome-5' name={'question-circle'} size={24} color="white" />
+              </TouchableOpacity>
+              <TouchableOpacity onPress={() => navigation.navigate('Profile')}  hitSlop={{top: 20, bottom: 20, left: 20, right: 20}}>
+                <Icon type='font-awesome-5' name={'user-circle'} size={24} color="white" />
+              </TouchableOpacity>
             </View>
         </View>
     )
@@ -30,7 +40,7 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.2,
         bottom: 0,
         width: '100%',
-        height: 70,
+        height: 80,
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
@@ -42,6 +52,6 @@ const styles = StyleSheet.create({
         marginTop: 20,
         width: '100%',
         justifyContent: 'space-evenly',
-        marginBottom: 20,
+        marginBottom: 30,
     }
 });
