@@ -32,7 +32,7 @@ export default class MyOfferInfoAccounts extends React.Component {
                     </View>
 
                     <View style={{flexDirection:'row', marginTop: 10 }}>
-                        <Card containerStyle={{width: '95%', borderRadius:10, backgroundColor:'#C4C4C4', marginLeft: 10, marginTop: 10}}>
+                        <Card containerStyle={{width: '95%', borderRadius:10, backgroundColor:'white', marginLeft: 10, marginTop: 10}}>
                         <View style={{flexDirection:'row', marginTop: 20}}>
                             <Image
                                 style={{ width: 50,

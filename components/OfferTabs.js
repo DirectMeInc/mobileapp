@@ -6,7 +6,7 @@ import Icons from 'react-native-vector-icons/MaterialIcons';
 
 const FirstRoute = () => (
     <View style={{flexDirection:'row', justifyContent: 'center', alignItems: 'center'}}>
-        <Card containerStyle={{width: '95%', borderRadius: 10, backgroundColor:'#C4C4C4', marginTop: 10}}>
+        <Card containerStyle={{width: '95%', borderRadius: 10, backgroundColor:'white', marginTop: 10}}>
         <View style={{flexDirection:'row', marginTop: 20}}>
             <Icons name='account-balance' style={{ fontSize: 40, color: '#000099', marginLeft: 20 }}></Icons>
             <Text style={{fontSize: 30, fontWeight: 'bold', marginLeft:10, marginTop: 2}}>Savings</Text>
@@ -19,10 +19,10 @@ const FirstRoute = () => (
         </Card>
     </View>
 );
-  
+
 const SecondRoute = () => (
     <View style={{flexDirection:'row', justifyContent: 'center', alignItems: 'center'}}>
-        <Card containerStyle={{width: '95%', borderRadius:10, backgroundColor:'#C4C4C4', marginTop: 10}}>
+        <Card containerStyle={{width: '95%', borderRadius:10, backgroundColor:'white', marginTop: 10}}>
         <View style={{flexDirection:'row', marginTop: 20}}>
             <Image
                 style={{ width: 50,
@@ -45,7 +45,7 @@ const SecondRoute = () => (
 const ThirdRoute = () => (
     <View style={{ flex: 1, backgroundColor: '#25315C' }} />
 );
-  
+
 export default function OfferTabs() {
     const layout = useWindowDimensions();
 
@@ -55,7 +55,7 @@ export default function OfferTabs() {
         { key: 'second', title: 'Available Accounts' },
         { key: 'third', title: 'Rewards' },
     ]);
-  
+
     const renderScene = SceneMap({
         first: FirstRoute,
         second: SecondRoute,
@@ -69,7 +69,7 @@ export default function OfferTabs() {
             style={{ backgroundColor: '#25315C' }}
         />
     );
-  
+
     return (
           <TabView
           navigationState={{ index, routes }}
