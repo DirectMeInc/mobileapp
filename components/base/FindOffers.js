@@ -2,8 +2,9 @@ import React from 'react';
 import {FlatList, ScrollView, StyleSheet, Alert} from 'react-native';
 import { View, Image, Text, Button, Colors, PanningProvider, Dialog, Constants, Slider, Card } from 'react-native-ui-lib';
 import DropDownPicker from 'react-native-dropdown-picker';
-import Header from './Header';
-import ActionBarHome from './ActionBar';
+import Header from '../Header';
+import ActionBarHome from '../ActionBar';
+import {navigate} from '../helpers';
 
 const INITIAL_VALUE = 0;
 const COLOR = Colors.blue30;
@@ -339,7 +340,6 @@ export default class FindOffers extends React.Component {
           <View style={{ flex: 1, backgroundColor: '#25315C'}}>
             <View style={{ flexDirection: 'column', marginBottom: 0, paddingBottom: 0 }}>
               <ScrollView style={{ marginBottom: 80, paddingTop: 10 }}>
-                <Header></Header>
 
             <View style={{ display: 'flex', flexDirection:'row', marginTop: 30 }}>
                 <Text style={{ fontSize: 30, color: '#2BF594', fontWeight: 'bold', position: 'absolute', marginLeft:20, marginRight:30}}>

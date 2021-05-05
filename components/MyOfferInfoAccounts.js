@@ -4,6 +4,7 @@ import { View, Image, Text, Button, Colors, PanningProvider, Dialog, Constants, 
 import Header from './Header';
 import ActionBarHome from './ActionBar';
 import Icons from 'react-native-vector-icons/MaterialIcons';
+import {navigate} from './helpers';
 
 export default class MyOfferInfoAccounts extends React.Component {
 
@@ -11,7 +12,6 @@ export default class MyOfferInfoAccounts extends React.Component {
     render() {
         return(
             <View style={{ flex: 1, backgroundColor: '#25315C'}}>
-                <Header></Header>
                     <View style={{flexDirection:'row', marginTop: 30, marginLeft: 20}}>
                             <Image
                                 style={{ width: 60,

@@ -4,6 +4,8 @@ import { View, Image, Text, Button, Colors, PanningProvider, Dialog, Constants, 
 import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
 import { ProgressBar } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
+import { Dimensions } from 'react-native';
+import {navigate} from './helpers';
 
 const SecondRoute = () => (
     <View style={{ flex: 1, backgroundColor: '#25315C' }} />
@@ -13,21 +15,24 @@ const ThirdRoute = () => (
     <View style={{ flex: 1, backgroundColor: '#25315C' }} />
 );
 
-export default function TabOffers() {
-    const layout = useWindowDimensions();
-    const navigation = useNavigation();
+export default class TabOffers extends React.Component {
+    state = {
+        prevBack: this.props.prevBack,
+        index: 0,
+        routes: [
+            { key: 'first', title: 'Current' },
+            { key: 'second', title: 'Completed' },
+            { key: 'third', title: 'Cancelled' },
+        ]
+    }
 
-    const [index, setIndex] = React.useState(0);
-    const [routes] = React.useState([
-        { key: 'first', title: 'Current' },
-        { key: 'second', title: 'Completed' },
-        { key: 'third', title: 'Cancelled' },
-    ]);
-
-    const renderScene = SceneMap({
+    renderScene = SceneMap({
         first: () =>
         (<View style={{ flex: 1, backgroundColor: '#25315C' }}>
-            <Card containerStyle={{width: '95%', borderRadius: 10, backgroundColor:'white', marginLeft: 10, marginTop: 10}} onPress={() => navigation.navigate('MyOfferInfo')}>
+            <Card
+                containerStyle={{width: '95%', borderRadius: 10, backgroundColor:'white', marginLeft: 10, marginTop: 10}}
+                onPress={() => navigate(this, 'MyOfferInfo', {})}
+            >
             <View style={{flexDirection:'row', marginTop: 20}}>
                 <Image
                     style={{ width: 50,
@@ -52,7 +57,7 @@ export default function TabOffers() {
         third: ThirdRoute,
     });
 
-    const renderTabBar = props => (
+    renderTabBar = props => (
         <TabBar
             {...props}
             indicatorStyle={{ backgroundColor: '#4C49C3' }}
@@ -60,14 +65,16 @@ export default function TabOffers() {
         />
     );
 
-    return (
+    render() {
+      return (
           <TabView
-            navigationState={{ index, routes }}
-            renderScene={renderScene}
-            onIndexChange={setIndex}
-            initialLayout={{ width: layout.width }}
+            navigationState={{ index: this.state.index, routes: this.state.routes }}
+            renderScene={this.renderScene}
+            onIndexChange={(index) => this.setState({index: index})}
+            initialLayout={{ width: Dimensions.get('window').width }}
             style = {{ marginTop: 50 }}
-            renderTabBar={renderTabBar}
+            renderTabBar={this.renderTabBar}
           />
-    );
+      )
+    }
   }

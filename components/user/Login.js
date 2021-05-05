@@ -4,6 +4,7 @@ import { View, Image, Text, Button, Colors } from 'react-native-ui-lib';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {login} from '../../actions/user';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import {navigate} from '../helpers';
 
 export default class Login extends React.Component {
     state = {
@@ -39,7 +40,7 @@ export default class Login extends React.Component {
                 ]
             )
         }
-        this.props.navigation.navigate('FindOffers');
+        navigate(this, 'FindOffers', {});
         // login(this.state.email, this.state.password)
         //     .then(data => {
         //         alert(data);
@@ -74,7 +75,7 @@ export default class Login extends React.Component {
                           size={22}
                           color='white'
                           style={{marginLeft: -40}}
-                          onPress={() => this.props.navigation.navigate('Landing')}
+                          onPress={() => navigate(this, 'Landing', {})}
                       />
                       <Image style={{ width: 250, height: 30 }} source={require('../../images/bankwhite.png')} />
                   </View>

@@ -6,13 +6,14 @@ import ActionBarHome from './ActionBar';
 import { FontAwesome } from '@expo/vector-icons';
 import MyOfferInfoTaskTabs from './MyOfferInfoTaskTabs';
 import Icons from 'react-native-vector-icons/MaterialIcons';
+import {navigate} from './helpers';
 
 export default class MyOfferInfoTasks extends React.Component {
 
     render() {
         return(
             <View style={{ flex: 1, backgroundColor: '#25315C'}}>
-                <Header></Header>
+
                     <View style={{flexDirection:'row', marginTop: 30, marginLeft: 20}}>
                             <Image
                                 style={{ width: 60,

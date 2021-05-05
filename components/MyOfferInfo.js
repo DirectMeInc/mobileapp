@@ -6,14 +6,12 @@ import ActionBarHome from './ActionBar';
 import { FontAwesome } from '@expo/vector-icons';
 import { Icon } from 'react-native-elements';
 import Icons from 'react-native-vector-icons/MaterialIcons';
+import {navigate} from './helpers';
 
 export default class MyOfferInfo extends React.Component {
-
     render() {
-        const { navigate } = this.props.navigation;
         return (
             <View style={{ flex: 1, backgroundColor: '#25315C'}}>
-                <Header></Header>
                 <View style={{flexDirection:'row', marginTop: 30, marginLeft: 20}}>
                         <Image
                             style={{ width: 60,
@@ -31,7 +29,7 @@ export default class MyOfferInfo extends React.Component {
                 </View>
 
                  <View style={{marginTop: 50, flexDirection: 'row', justifyContent: 'center'}}>
-                        <Card containerStyle={{width: '93%', borderRadius:10, backgroundColor:'#e8effc'}} onPress={() => navigate('MyOfferInfoTasks')}>
+                        <Card containerStyle={{width: '93%', borderRadius:10, backgroundColor:'#e8effc'}} onPress={() => navigate(this, 'MyOfferInfoTasks', {})}>
                         <View style={{flexDirection:'row', marginTop: 20, marginBottom: 20, justifyContent: 'space-between'}}>
                             <View style={{flexDirection:'row'}}>
                                 <Card containerStyle={{width: 50, height: 50, backgroundColor:'#e6e6ff', marginLeft: 10}}>
@@ -45,7 +43,7 @@ export default class MyOfferInfo extends React.Component {
                 </View>
 
                 <View style={{marginTop: 25, flexDirection: 'row', justifyContent: 'center'}}>
-                        <Card containerStyle={{width: '93%', borderRadius:10, backgroundColor:'#eff5ef'}} onPress={() => navigate('MyOfferInfoAccounts')}>
+                        <Card containerStyle={{width: '93%', borderRadius:10, backgroundColor:'#eff5ef'}} onPress={() => navigate(this, 'MyOfferInfoAccounts', {})}>
                         <View style={{flexDirection:'row', marginTop: 20, marginBottom: 20, justifyContent: 'space-between'}}>
                             <View style={{flexDirection:'row'}}>
                                 <Card containerStyle={{width: 50, height: 50, backgroundColor:'#cfe2cf', marginLeft: 10}}>
@@ -59,7 +57,7 @@ export default class MyOfferInfo extends React.Component {
                 </View>
 
                 <View style={{marginTop: 25, flexDirection: 'row', justifyContent: 'center'}}>
-                        <Card containerStyle={{width: '93%', borderRadius:10, backgroundColor:'#ffece6'}} onPress={() => navigate('MyOfferInfoRewards')}>
+                        <Card containerStyle={{width: '93%', borderRadius:10, backgroundColor:'#ffece6'}} onPress={() => navigate(this, 'MyOfferInfoRewards', {})}>
                         <View style={{flexDirection:'row', marginTop: 20, marginBottom: 20, justifyContent: 'space-between'}}>
                             <View style={{flexDirection:'row'}}>
                                 <Card containerStyle={{width: 50, height: 50, backgroundColor:'#ffdacc', marginLeft: 10}}>
@@ -70,7 +68,7 @@ export default class MyOfferInfo extends React.Component {
                             <FontAwesome name="chevron-right" size={30} color="#ff4500" style={{marginTop: 10, marginRight: 20}}/>
                         </View>
                         </Card>
-                </View> 
+                </View>
 
                 <ActionBarHome></ActionBarHome>
             </View>

@@ -5,6 +5,7 @@ import DropDownPicker from 'react-native-dropdown-picker';
 import ModalDropdown from 'react-native-modal-dropdown';
 import Header from './Header';
 import ActionBarHome from './ActionBar';
+import {navigate} from './helpers';
 
 export default class AccountInfo extends React.Component {
     constructor(props) {
@@ -16,7 +17,7 @@ export default class AccountInfo extends React.Component {
     }
 
     renderRow(row, id) {
-    
+
         return (
             <ListItem
               height={60.5}
@@ -59,8 +60,6 @@ export default class AccountInfo extends React.Component {
                 <FlatList
                 ListHeaderComponent={
                     <View style={{ flexDirection: 'column', marginBottom: 0, paddingBottom: 0 }}>
-                    <Header></Header>
-
                     <View style={{flexDirection:'row', marginTop: 30, marginLeft: 20}}>
                         <Image
                             style={{ width: 60,

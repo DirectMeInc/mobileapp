@@ -2,6 +2,7 @@ import React from 'react';
 import { TextInput } from 'react-native'
 import { View, Image, Text, Button, Colors } from 'react-native-ui-lib';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import {navigate} from './helpers';
 
 export default class Landing extends React.Component {
     render() {
@@ -23,7 +24,7 @@ export default class Landing extends React.Component {
                           style={{ marginTop: 50 }}
                           borderRadius={15}
                           outlineColor='#2BF594'
-                          onPress={() => this.props.navigation.navigate("Register")}
+                          onPress={() => navigate(this, "Register", {})}
                       />
                   </View>
                   <Text
@@ -31,9 +32,9 @@ export default class Landing extends React.Component {
                           fontSize: 16, marginTop: 40, fontWeight: 'bold',
                           color: 'white', textAlign: 'center'
                       }}
-                      // onPress={() => this.props.navigation.navigate("Login")}
+                      // onPress={() => navigate(this, "Login", {})}
                   >
-                          Already have an account? <Text style={{color: '#2BF594'}} onPress={() => this.props.navigation.navigate("Login")}>Log in</Text>
+                          Already have an account? <Text style={{color: '#2BF594'}} onPress={() => navigate(this, "Login", {})}>Log in</Text>
                   </Text>
               </View>
           </View>

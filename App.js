@@ -5,6 +5,17 @@ import * as SplashScreen from 'expo-splash-screen';
 import {login, getUser} from './actions/user';
 import * as SecureStore from 'expo-secure-store';
 import {save, getValue, deleteValue} from './actions/secureStore';
+import { Asset } from 'expo-asset';
+
+function cacheImages(images) {
+  return images.map(image => {
+    if (typeof image === 'string') {
+      return Image.prefetch(image);
+    } else {
+      return Asset.fromModule(image).downloadAsync();
+    }
+  });
+}
 
 export default function App() {
   const [appIsReady, setAppIsReady] = useState(false);
@@ -55,6 +66,14 @@ export default function App() {
         if (!alreadySet) {
             setStartingScreen('Landing');
         }
+
+        const imageAssets = cacheImages([
+          require('./images/hawkbanks.png'),
+          require('./images/bankwhite.png'),
+        ]);
+
+        await Promise.all([...imageAssets]);
+
       } catch (e) {
         console.warn(e);
       } finally {
