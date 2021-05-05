@@ -1,5 +1,5 @@
 import baseUrl from '../settings';
-import {save, getValue, deleteValue} from './secureStore';
+import {save, getValue} from './secureStore';
 
 const customFetch = (endpoint, options) => {
     let method = !options.method ? 'GET' : options.method;

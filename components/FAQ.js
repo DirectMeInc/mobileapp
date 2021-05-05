@@ -4,6 +4,7 @@ import {Card, Text, Image, ListItem, Carousel, Spacings, View, ExpandableSection
 import { Icon } from 'react-native-elements';
 import Header from './Header';
 import ActionBarHome from './ActionBar';
+import {navigate} from './helpers';
 
 export default class FAQ extends PureComponent {
 
@@ -11,7 +12,7 @@ export default class FAQ extends PureComponent {
         expanded: false,
         top: false
     };
-    
+
     onExpand() {
         this.setState({
           expanded: !this.state.expanded
@@ -21,7 +22,7 @@ export default class FAQ extends PureComponent {
     getChevron() {
         if (this.state.expanded) {
           return this.state.top ? 'sort-down' : 'sort-up';
-        } 
+        }
         return this.state.top ? 'sort-up' : 'sort-down';
     }
 
@@ -33,11 +34,10 @@ export default class FAQ extends PureComponent {
             <View style={{ flex: 1, backgroundColor: '#25315C'}}>
             <View style={{ flexDirection: 'column', marginBottom: 0, paddingBottom: 0 }}>
             <ScrollView style={{ marginBottom: 80, paddingTop: 10 }}>
-                <Header></Header>
                 <View style={{ display: 'flex', flexDirection:'row', marginTop: 30 }}>
-                    <Text style={{ fontSize: 30, color: '#2BF594', fontWeight: 'bold', position: 'absolute', marginLeft: 20}}>   
+                    <Text style={{ fontSize: 30, color: '#2BF594', fontWeight: 'bold', position: 'absolute', marginLeft: 20}}>
                         General FAQ
-                    </Text> 
+                    </Text>
                 </View>
                 <ExpandableSection
                     top={top}

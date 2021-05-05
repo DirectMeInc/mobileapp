@@ -17,7 +17,6 @@ export const login = (email, password) => {
             return token;
         })
         .catch(error => {
-            console.log(error);
             if (error.response == undefined) {
                 return 'other_problem';
             }

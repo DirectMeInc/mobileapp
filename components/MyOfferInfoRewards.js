@@ -6,13 +6,14 @@ import ActionBarHome from './ActionBar';
 import { FontAwesome } from '@expo/vector-icons';
 import Icons from 'react-native-vector-icons/MaterialIcons';
 import { Icon } from 'react-native-elements';
+import {navigate} from './helpers';
 
 export default class MyOfferInfoRewards extends React.Component {
 
     render() {
         return(
             <View style={{ flex: 1, backgroundColor: '#25315C'}}>
-                <Header></Header>
+
                     <View style={{flexDirection:'row', marginTop: 30, marginLeft: 20}}>
                             <Image
                                 style={{ width: 60,
@@ -39,7 +40,7 @@ export default class MyOfferInfoRewards extends React.Component {
                                 <Text style={{fontSize: 20,  marginTop: 5, marginLeft: 20, fontWeight: 'bold'}}>Reward of $300.00</Text>
                         </View>
                         </Card>
-                    </View> 
+                    </View>
 
                 <ActionBarHome></ActionBarHome>
 

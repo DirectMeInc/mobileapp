@@ -5,6 +5,7 @@ import Icons from 'react-native-vector-icons/MaterialIcons';
 import Header from './Header';
 import ActionBarHome from './ActionBar';
 import { FontAwesome } from '@expo/vector-icons';
+import {navigate} from './helpers';
 
 export default class OfferPage extends React.Component {
 
@@ -26,12 +27,12 @@ export default class OfferPage extends React.Component {
             <View style={{ flex: 1, backgroundColor: '#25315C'}}>
             <View style={{ flexDirection: 'column', marginBottom: 0, paddingBottom: 0 }}>
             <ScrollView style={{ marginBottom: 145, paddingTop: 10 }}>
-                <Header></Header>
+
 
                 <View style={{flexDirection: 'column'}}>
-                    <Text style={{ fontSize: 30, color: '#2BF594', fontWeight: 'bold', position: 'absolute', marginLeft: 20, marginRight: 30, marginTop: 40}}>   
-                        Chase | $150 Savings 
-                    </Text> 
+                    <Text style={{ fontSize: 30, color: '#2BF594', fontWeight: 'bold', position: 'absolute', marginLeft: 20, marginRight: 30, marginTop: 40}}>
+                        Chase | $150 Savings
+                    </Text>
 
                 <View style={{flexDirection:'row', justifyContent: 'center', alignItems: 'center', marginTop: 100}}>
                     <Card
@@ -50,7 +51,7 @@ export default class OfferPage extends React.Component {
                                 Offer available in all states!
                             </Text>
                             <Text text70 color='#0d3172' marginT-5>
-                                You must not have had an account with this bank in the previous 2 years. 
+                                You must not have had an account with this bank in the previous 2 years.
                             </Text>
                         </View>
                     </Card>
@@ -86,36 +87,36 @@ export default class OfferPage extends React.Component {
                             </Text>
                         </View>
                     </Card>
-                </View> 
+                </View>
 
 {/*                     <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginTop: 50}}>
-                        <Text style={{ fontSize: 20, color: 'white', fontWeight: 'bold', position: 'absolute'}}>   
+                        <Text style={{ fontSize: 20, color: 'white', fontWeight: 'bold', position: 'absolute'}}>
                             How do I start?
-                        </Text> 
+                        </Text>
                     </View>
 
                     <View style={{flexDirection: 'column', justifyContent: 'center', alignItems: 'center', marginTop: 60}}>
-                    <Text style={{ fontSize: 15, color: 'white', fontWeight: 'bold', position: 'absolute', width: '80%'}}>   
+                    <Text style={{ fontSize: 15, color: 'white', fontWeight: 'bold', position: 'absolute', width: '80%'}}>
                             1. Check above to make sure you qualify and select a proper account.
-                    </Text> 
+                    </Text>
                     </View>
 
                     <View style={{flexDirection: 'column', justifyContent: 'center', alignItems: 'center', marginTop: 60}}>
-                    <Text style={{ fontSize: 15, color: 'white', fontWeight: 'bold', position: 'absolute', width: '80%'}}>   
+                    <Text style={{ fontSize: 15, color: 'white', fontWeight: 'bold', position: 'absolute', width: '80%'}}>
                         2. Sign up and take a screenshot of the terms on the bank's website.
-                    </Text> 
+                    </Text>
                     </View>
 
                     <View style={{flexDirection: 'column', justifyContent: 'center', alignItems: 'center', marginTop: 60}}>
-                    <Text style={{ fontSize: 15, color: 'white', fontWeight: 'bold', position: 'absolute', width: '80%'}}>   
+                    <Text style={{ fontSize: 15, color: 'white', fontWeight: 'bold', position: 'absolute', width: '80%'}}>
                         3. Link your account with Chase to BankScout to track your progress!
-                    </Text> 
+                    </Text>
                     </View>
 
                     <View style={{flexDirection: 'column', justifyContent: 'center', alignItems: 'center', marginTop: 60}}>
-                    <Text style={{ fontSize: 15, color: 'white', fontWeight: 'bold', position: 'absolute', width: '80%'}}>   
+                    <Text style={{ fontSize: 15, color: 'white', fontWeight: 'bold', position: 'absolute', width: '80%'}}>
                         4. Let us know if we got anything wrong, or cancel the offer if you no longer want to do it.
-                    </Text> 
+                    </Text>
                     </View> */}
 
                     <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginTop: 10}}>
@@ -127,12 +128,12 @@ export default class OfferPage extends React.Component {
                             labelStyle={{ fontWeight: '600', fontSize: 20, color: 'white' }}
                             style={{ width: 200 }}
                             borderRadius={10}
-                            onPress={() => navigate('Onboarding')}
+                            onPress={() => push('Onboarding')}
                         />
                     </View>
 
                 </View>
-                
+
             </ScrollView>
                 <ActionBarHome></ActionBarHome>
             </View>

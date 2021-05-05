@@ -3,6 +3,7 @@ import { useWindowDimensions, ScrollView } from 'react-native';
 import { View, Image, Text, Card } from 'react-native-ui-lib';
 import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
 import Icons from 'react-native-vector-icons/MaterialIcons';
+import {navigate} from './helpers';
 
 const FirstRoute = () => (
     <View style={{flexDirection:'row', justifyContent: 'center', alignItems: 'center'}}>

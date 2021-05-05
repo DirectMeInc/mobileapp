@@ -5,6 +5,7 @@ import { View, Image, Text, Button, Colors, PanningProvider, Dialog, Constants, 
 import Icons from 'react-native-vector-icons/MaterialIcons';
 import ActionBarHome from './ActionBar';
 import OfferTabs from './OfferTabs';
+import {navigate} from './helpers';
 
 export default class OfferPage extends React.Component {
     constructor(props){
@@ -26,36 +27,36 @@ export default class OfferPage extends React.Component {
         return (
             <View style={{ flex: 1, backgroundColor: '#25315C'}}>
 
-                <Header></Header>
+
 
                 <View style={{ flexDirection:'row', marginTop: 40}}>
-                    <Text style={{ fontSize: 30, color: '#2BF594', fontWeight: 'bold', position: 'absolute', marginLeft: 20, marginRight: 30}}>   
-                        Chase | $150 Savings 
-                    </Text> 
+                    <Text style={{ fontSize: 30, color: '#2BF594', fontWeight: 'bold', position: 'absolute', marginLeft: 20, marginRight: 30}}>
+                        Chase | $150 Savings
+                    </Text>
                 </View>
 
                 <View style={{ flexDirection:'row', marginTop: 40, justifyContent: 'center', alignItems: 'center', textAlign:'center'}}>
                     <View style={{ flexDirection:'column', marginTop: 30, justifyContent: 'center', alignItems: 'center', textAlign:'center'}}>
                     <Icons name='account-balance' style={{ fontSize: 40, color: 'white' }}/>
-                        <Text style={{ fontSize: 15, color: 'white'}}>   
+                        <Text style={{ fontSize: 15, color: 'white'}}>
                             Savings
-                        </Text> 
+                        </Text>
                     </View>
                     <View style={{ flexDirection:'column', marginTop: 30, justifyContent: 'center', alignItems: 'center', textAlign:'center'}}>
                     <Icons name='arrow-right-alt' style={{ fontSize: 60, color: 'white'}}></Icons>
                     </View>
                     <View style={{ flexDirection:'column', marginTop: 30, justifyContent: 'center', alignItems: 'center', textAlign:'center'}}>
                     <Icons name='emoji-events' style={{ fontSize: 40, color: 'white'}}></Icons>
-                        <Text style={{ fontSize: 15, color: 'white'}}>   
+                        <Text style={{ fontSize: 15, color: 'white'}}>
                             $300.00
-                        </Text> 
+                        </Text>
                     </View>
                 </View>
 
                 <View style={{ flexDirection:'row', marginTop: 20, justifyContent: 'center', alignItems: 'center', textAlign:'center'}}>
-                    <Text style={{ fontSize: 15, color: '#2BF594'}}>   
+                    <Text style={{ fontSize: 15, color: '#2BF594'}}>
                         Reward of $300.00
-                    </Text> 
+                    </Text>
                 </View>
 
                 <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
@@ -66,7 +67,7 @@ export default class OfferPage extends React.Component {
                         style={{ width: 180, marginTop: 20}}
                         borderRadius={10}
                         outlineColor='white'
-                        onPress={() => navigate('StartOffer')}
+                        onPress={() => push('StartOffer')}
                 />
                 </View>
 

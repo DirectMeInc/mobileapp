@@ -3,6 +3,7 @@ import { useWindowDimensions, ScrollView } from 'react-native';
 import { View, Image, Text, Card } from 'react-native-ui-lib';
 import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
 import Icons from 'react-native-vector-icons/MaterialIcons';
+import {navigate} from './helpers';
 
 const FirstRoute = () => (
     <View style={{ flex: 1, backgroundColor: '#25315C' }}>
@@ -19,7 +20,7 @@ const FirstRoute = () => (
         </Card>
     </View>
 );
-  
+
 const SecondRoute = () => (
     <View style={{ flex: 1, backgroundColor: '#25315C' }}/>
 );
@@ -27,7 +28,7 @@ const SecondRoute = () => (
 const ThirdRoute = () => (
     <View style={{ flex: 1, backgroundColor: '#25315C' }} />
 );
-  
+
 export default function MyOfferInfoTaskTabs() {
     const layout = useWindowDimensions();
 
@@ -37,7 +38,7 @@ export default function MyOfferInfoTaskTabs() {
         { key: 'second', title: 'Done' },
         { key: 'third', title: 'Coming Up' },
     ]);
-  
+
     const renderScene = SceneMap({
         first: FirstRoute,
         second: SecondRoute,
@@ -51,7 +52,7 @@ export default function MyOfferInfoTaskTabs() {
             style={{ backgroundColor: '#25315C' }}
         />
     );
-  
+
     return (
           <TabView
           navigationState={{ index, routes }}

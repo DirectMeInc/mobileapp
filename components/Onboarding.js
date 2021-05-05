@@ -2,6 +2,7 @@ import { Image } from 'react-native';
 import React from 'react';
 import { FontAwesome } from '@expo/vector-icons';
 import Onboarding from 'react-native-onboarding-swiper'; // 0.4.0
+import {navigate} from './helpers';
 
 export default class OnboardingPage extends React.Component {
     render() {
@@ -34,7 +35,7 @@ export default class OnboardingPage extends React.Component {
                     subtitle: 'Let us know if we got anything wrong, or cancel the offer if you no longer want to do it.',
                 },
                 ]}
-                onDone={() => navigate('StartOffer')}
+                onDone={() => push('StartOffer')}
             />
         )
     }

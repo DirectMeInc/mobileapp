@@ -5,6 +5,7 @@ import Header from '../Header';
 import ActionBarHome from '../ActionBar';
 import { FontAwesome } from '@expo/vector-icons';
 import { Icon } from 'react-native-elements';
+import {navigate} from '../helpers';
 
 const COLORS = {
     ORANGE: {name: 'Orange', color: Colors.orange20},
@@ -51,7 +52,6 @@ export default class Profile extends PureComponent {
         const {expanded, top} = this.state;
         return (
             <View style={{ flex: 1, backgroundColor: '#25315C'}}>
-                <Header></Header>
                 <View style={{ ...styles.centering, marginTop: 20 }}>
                     <Avatar size={150} label='JD' labelColor='white' backgroundColor='#44589F' outlineColor="white" />
                     <Text color="white" style={{fontSize:25, marginTop: 12}}>
