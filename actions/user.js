@@ -1,8 +1,8 @@
 import customFetch from './customFetch';
 import {save, getValue, deleteValue} from './secureStore';
 
-export const getUser = (token) => {
-    return customFetch(`get-user/`, {}).catch(error => null);
+export const getUser = () => {
+    return customFetch(`get-user/`, {throwError: false})
 }
 
 export const login = (email, password) => {
@@ -14,7 +14,9 @@ export const login = (email, password) => {
     })
         .then(data => {
             save('token', data.token);
-            return token;
+            save("email", email);
+            save("password", password);
+            return 'success';
         })
         .catch(error => {
             if (error.response == undefined) {

@@ -40,7 +40,33 @@ export default class Login extends React.Component {
                 ]
             )
         }
-        navigate(this, 'FindOffers', {});
+
+        login(this.state.email, this.state.password)
+            .then(data => {
+                if (data == 'success') {
+                    navigate(this, 'FindOffers', {});
+                } else if (data == 'incorrect') {
+                    Alert.alert(
+                        'Incorrect username or password',
+                        "Please try again or reset your password",
+                        [
+                          {
+                            text: "Try again",
+                            onPress: () => {
+                              this.setState({password: '', emailProblem: false, passwordProblem: false}, () => this.secondTextInput.focus());
+                            }
+                          },
+                          {
+                            text: "Reset password",
+                            onPress: () => alert('TODO: implement')
+                          }
+                        ]
+                    )
+                } else if (data == 'inactive') {
+                    alert('TODO: implement');
+                }
+            })
+
         // login(this.state.email, this.state.password)
         //     .then(data => {
         //         alert(data);

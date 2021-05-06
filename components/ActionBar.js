@@ -5,22 +5,45 @@ import { ActionBar, View, Text, Button } from 'react-native-ui-lib';
 import { Icon } from 'react-native-elements';
 import {navigate} from './helpers';
 
+const offerScreens = [
+    'MyOffers',
+    'MyOfferInfo',
+    'MyOfferInfoTasks',
+    'MyOfferInfoAccounts',
+    'MyOfferInfoRewards',
+    'StartOffer',
+
+]
+
+const accountScreens = [
+    'Accounts',
+    'AccountInfo'
+]
+
 class ActionBarHome extends React.Component {
     render() {
       return (
           <View style={styles.bar}>
               <View style={styles.iconRow}>
                 <TouchableOpacity onPress={() => navigate(this, 'MyOffers', {})} hitSlop={{top: 20, bottom: 20, left: 20, right: 20}}>
-                  <Icon type='font-awesome-5' name={'coins'} size={24} color="white"/>
+                  <View style={{backgroundColor: this.props.route.name == 'MyOffers' ? '#323C56' : '#44589F', borderRadius: 100, height: 50, width: 50, display: "flex", justifyContent: "center", alignItems: "center"}}>
+                    <Icon style={{}} type='font-awesome-5' name={'coins'} size={24} color="white"/>
+                  </View>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => navigate(this, 'Accounts', {})} hitSlop={{top: 20, bottom: 20, left: 20, right: 20}}>
-                  <Icon type='font-awesome-5' name={'chart-bar'} size={24} color="white"/>
+                  <View style={{backgroundColor: this.props.route.name == 'Accounts' ? '#323C56' : '#44589F', borderRadius: 100, height: 50, width: 50, display: "flex", justifyContent: "center", alignItems: "center"}}>
+                    <Icon type='font-awesome-5' name={'wallet'} size={24} color="white"/>
+                  </View>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => navigate(this, 'FindOffers', {})} hitSlop={{top: 20, bottom: 20, left: 20, right: 20}}>
-                  <Icon type='font-awesome-5' name={'search-dollar'} size={24} color="white"/>
+                  <View style={{backgroundColor: this.props.route.name == 'FindOffers' ? '#323C56' : '#44589F', borderRadius: 100, height: 50, width: 50, display: "flex", justifyContent: "center", alignItems: "center"}}>
+                    <Icon type='font-awesome-5' name={'search-dollar'} size={24} color="white"/>
+                  </View>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => navigate(this, 'Profile', {})}  hitSlop={{top: 20, bottom: 20, left: 20, right: 20}}>
-                  <Icon type='font-awesome-5' name={'user-circle'} size={24} color="white" />
+                  <View style={{backgroundColor: this.props.route.name == 'Profile' ? '#323C56' : '#44589F', borderRadius: 100, height: 50, width: 50, display: "flex", justifyContent: "center", alignItems: "center"}}>
+                    <Icon type='font-awesome-5' name={'user-circle'} size={24} color="white" />
+                  </View>
                 </TouchableOpacity>
               </View>
           </View>

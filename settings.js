@@ -1,4 +1,4 @@
-const baseUrl = 'http://172.20.5.10:8000/';
+const baseUrl = 'http://3.129.231.54/';
 // const baseUrl = 'https://dev.bankscout.com/';
 
 // const baseUrl = 'https://api.bankscout.com/';
