@@ -1,6 +1,6 @@
 import React from 'react';
-import {FlatList, ScrollView, StyleSheet, Alert} from 'react-native';
-import { View, Image, Text, Button, Colors, PanningProvider, Dialog, Constants, Slider, Card } from 'react-native-ui-lib';
+import {FlatList, ScrollView, StyleSheet, Alert, RefreshControl, Image} from 'react-native';
+import { View, Button, Colors, PanningProvider, Dialog, Constants, Slider, Card, Text } from 'react-native-ui-lib';
 import DropDownPicker from 'react-native-dropdown-picker';
 import Header from '../Header';
 import ActionBarHome from '../ActionBar';
@@ -59,7 +59,7 @@ export default class FindOffers extends React.Component {
           sliderValue1: INITIAL_VALUE,
           sliderValue2: INITIAL_VALUE,
           sliderValue3: INITIAL_VALUE,
-
+          refreshing: false
         };
 
         this.onSliderValueChange1 = this.onSliderValueChange1.bind(this);
@@ -333,106 +333,100 @@ export default class FindOffers extends React.Component {
         );
       };
 
+    componentDidUpdate(prevProps) {
+      null
+    }
+
     render() {
         const { navigate } = this.props.navigation;
 
         return (
           <View style={{ flex: 1, backgroundColor: '#25315C'}}>
             <View style={{ flexDirection: 'column', marginBottom: 0, paddingBottom: 0 }}>
-              <ScrollView style={{ marginBottom: 80, paddingTop: 10 }}>
+              <ScrollView
+                  style={{ paddingTop: 5 }}
+                  refreshControl={
+                    <RefreshControl
+                      refreshing={this.state.refreshing}
+                      onRefresh={() => this.setState(
+                        {refreshing: true},
+                        () => this.props.refreshAvailableOffers().then(data => this.setState({refreshing: false}))
+                      )}
+                    />
+                  }
+              >
+                <View style={{ display: 'flex', flexDirection:'row', marginLeft: 30, marginRight: 30, alignItems: 'center', justifyContent: 'space-between', marginTop: 30 }}>
+                    <Text style={{ fontSize: 30, color: '#2BF594', fontWeight: 'bold'}}>
+                        Find Offers
+                    </Text>
+                    <Button
+                            backgroundColor="#25315C"
+                            label="Filter"
+                            labelStyle={{ fontWeight: '600', fontSize: 20, color: 'white' }}
+                            style={{ width: 80}}
+                            borderRadius={10}
+                            outlineColor='white'
+                            onPress={this.showDialog}
+                    />
+                </View>
+                <View style={{ display: 'flex', flexDirection:'column', alignItems: 'center', marginTop: 30, marginLeft:30, marginRight:30, paddingBottom: 125}}>
+                    <DropDownPicker
+                            items={[
+                                {label: 'Recommended', value: 'Recommended'},
+                                {label: 'Bonus', value: 'Bonus'},
+                                {label: 'Savings Required', value: 'Savings Required'},
+                                {label: 'Monthly Direct Deposits', value: 'Monthly Direct Deposits'},
+                                {label: 'Monthly Direct Transactions', value: 'Monthly Direct Transactions'},
+                                {label: 'Expiration (Earliest)', value: 'Expiration (Earliest)'},
+                                {label: 'Expiration (Latest)', value: 'Expiration (Latest)'},
 
-            <View style={{ display: 'flex', flexDirection:'row', marginTop: 30 }}>
-                <Text style={{ fontSize: 30, color: '#2BF594', fontWeight: 'bold', position: 'absolute', marginLeft:20, marginRight:30}}>
-                    Find Offers
-                </Text>
-                <Button
-                        backgroundColor="#25315C"
-                        label="Filter"
-                        labelStyle={{ fontWeight: '600', fontSize: 20, color: 'white' }}
-                        style={{ width: 80, marginLeft: 310}}
-                        borderRadius={10}
-                        outlineColor='white'
-                        onPress={this.showDialog}
-                />
-            </View>
-            <View style={{ display: 'flex', flexDirection:'column', alignItems: 'center', marginTop: 30, marginLeft:30, marginRight:30}}>
-                <DropDownPicker
-                        items={[
-                            {label: 'Recommended', value: 'Recommended'},
-                            {label: 'Bonus', value: 'Bonus'},
-                            {label: 'Savings Required', value: 'Savings Required'},
-                            {label: 'Monthly Direct Deposits', value: 'Monthly Direct Deposits'},
-                            {label: 'Monthly Direct Transactions', value: 'Monthly Direct Transactions'},
-                            {label: 'Expiration (Earliest)', value: 'Expiration (Earliest)'},
-                            {label: 'Expiration (Latest)', value: 'Expiration (Latest)'},
 
-
-                        ]}
-                        defaultValue={this.state.state}
-                        placeholder="Sort By"
-                        placeholderStyle={{color: 'white', fontWeight: 'bold'}}
-                        containerStyle={{height: 40}}
-                        style={{backgroundColor: '#25315C', width: '100%', color: 'white'}}
-                        itemStyle={{
-                            justifyContent: 'flex-start'
-                        }}
-                        dropDownStyle={{backgroundColor: '#fafafa'}}
-                        onChangeItem={item => this.setState({
-                            state: item.value
-                        })}
-                        arrowColor='white'
-                        selectedLabelStyle={{
-                          color: 'white',
-                          fontWeight: 'bold'
-                      }}
-                />
-                    <Card
-                        height={120}
-                        width='95%'
-                        containerStyle={{backgroundColor:'white', marginTop: 30, flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}}
-                    >
-
-                        <Card.Section imageSource={{uri: 'https://i.pinimg.com/originals/70/4a/1e/704a1e534e8dc0138eee3ded449555d5.png'}} imageStyle={{width: 50, height: 50, marginTop: 10}}/>
-                        <Card.Section
-                            content={[
-                            {text: 'Chase', text70: true, grey10: true},
-                            {text: '$150 Savings', text80: true}
                             ]}
-                            contentStyle={{marginBottom: 10, marginTop: 10, alignItems: 'center'}}
-                        />
-                    </Card>
-                    <Card
-                        height={120}
-                        width='95%'
-                        containerStyle={{backgroundColor:'white', marginTop: 30, flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}}
-                    >
-
-                        <Card.Section imageSource={{uri: 'https://i.pinimg.com/originals/70/4a/1e/704a1e534e8dc0138eee3ded449555d5.png'}} imageStyle={{width: 50, height: 50, marginTop: 10}}/>
-                        <Card.Section
-                            content={[
-                            {text: 'Chase', text70: true, grey10: true},
-                            {text: '$150 Savings', text80: true}
-                            ]}
-                            contentStyle={{marginBottom: 10, marginTop: 10, alignItems: 'center'}}
-                        />
-                    </Card>
-                    <Card
-                        height={120}
-                        width='95%'
-                        containerStyle={{backgroundColor:'white', marginTop: 30, flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}}
-                    >
-
-                        <Card.Section imageSource={{uri: 'https://i.pinimg.com/originals/70/4a/1e/704a1e534e8dc0138eee3ded449555d5.png'}} imageStyle={{width: 50, height: 50, marginTop: 10}}/>
-                        <Card.Section
-                            content={[
-                            {text: 'Chase', text70: true, grey10: true},
-                            {text: '$150 Savings', text80: true}
-                            ]}
-                            contentStyle={{marginBottom: 10, marginTop: 10, alignItems: 'center'}}
-                        />
-                    </Card>
-            </View>
-
+                            defaultValue={this.state.state}
+                            placeholder="Sort By"
+                            placeholderStyle={{color: 'white', fontWeight: 'bold'}}
+                            containerStyle={{height: 40, marginBottom: 10}}
+                            style={{backgroundColor: '#25315C', width: '100%', color: 'white'}}
+                            itemStyle={{
+                                justifyContent: 'flex-start'
+                            }}
+                            dropDownStyle={{backgroundColor: '#fafafa'}}
+                            onChangeItem={item => this.setState({
+                                state: item.value
+                            })}
+                            arrowColor='white'
+                            selectedLabelStyle={{
+                              color: 'white',
+                              fontWeight: 'bold'
+                          }}
+                    />
+                        {
+                            (new Array(10).fill(this.props.availableOffers).flat()).map((offer, i) => {
+                                return (
+                                  <Card
+                                      key={i}
+                                      width='100%'
+                                      containerStyle={{backgroundColor: 'white', marginTop: 20, paddingBottom: '5%'}}
+                                  >
+                                      <View style={{flexDirection:'row', marginTop: 20, marginLeft: 20, alignContent: 'center', alignItems: 'center'}}>
+                                          <Image
+                                              source={{uri: "https://logo.clearbit.com/" + offer.bank.url}}
+                                              defaultSource={require('../../assets/splash.png')}
+                                              style={{width: 50, height: 50}}
+                                          />
+                                          <View style={{flexDirection:'column', marginLeft: 10}}>
+                                              <Text style={{fontSize: 22, fontWeight: 'bold'}}>{offer.bank.name}</Text>
+                                              <Text style={{fontSize: 20, marginTop: 3}}>{offer.name}</Text>
+                                          </View>
+                                      </View>
+                                      <View style={{marginLeft: 20, marginTop: 10}}>
+                                        <Text style={{fontSize: 16}}>Minimum savings of $10,000 </Text>
+                                      </View>
+                                  </Card>
+                                )
+                            })
+                        }
+                </View>
             {this.renderDialog()}
             </ScrollView>
             </View>

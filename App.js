@@ -3,6 +3,8 @@ import MainStackNavigator from './AppNavigator';
 import { View } from 'react-native';
 import * as SplashScreen from 'expo-splash-screen';
 import {login, getUser} from './actions/user';
+import { getAvailableOffers, getUserOffers } from './actions/offers';
+import { getAccounts } from './actions/accounts';
 import * as SecureStore from 'expo-secure-store';
 import {save, getValue, deleteValue} from './actions/secureStore';
 import { Asset } from 'expo-asset';
@@ -21,6 +23,9 @@ export default function App() {
   const [appIsReady, setAppIsReady] = useState(false);
   const [startingScreen, setStartingScreen] = useState(null);
   const [user, setUser] = useState(null);
+  const [availableOffers, setAvailableOffers] = useState(null);
+  const [userOffers, setUserOffers] = useState(null);
+  const [accounts, setAccounts] = useState(null);
 
   useEffect(() => {
     async function prepare() {
@@ -30,18 +35,19 @@ export default function App() {
 
         let tryNewToken = true;
         let alreadySet = false;
+        let makeRequests = false;
 
         const token = await SecureStore.getItemAsync('token');
+
         if (!!token) {
-            getUser(token)
-                .then(data => {
-                    if (!!data) {
-                        setStartingScreen('MyOffers');
-                        setUser(data);
-                        tryNewToken = false;
-                        alreadySet = true;
-                    }
-                })
+            let userData = await getUser();
+            if (!!userData) {
+                setStartingScreen('FindOffers');
+                setUser(userData);
+                tryNewToken = false;
+                alreadySet = true;
+                makeRequests = true;
+            }
         }
 
         if (!!tryNewToken) {
@@ -50,16 +56,13 @@ export default function App() {
 
             if (!!email && !!password) {
                 alreadySet = true;
-                login(email, password)
-                    .then(data => {
-                        if (!data || !data.user) {
-                          setStartingScreen('WelcomeBack');
-                        }
-                        if (!!data.user) {
-                            setStartingScreen('MyOffers');
-                            setUser(data);
-                        }
-                    })
+                let loginStatus = await login(email, password);
+                if (loginStatus == 'success') {
+                    setStartingScreen('FindOffers');
+                    setUser(data);
+                } else {
+                    setStartingScreen('WelcomeBack');
+                }
             }
         }
 
@@ -67,13 +70,24 @@ export default function App() {
             setStartingScreen('Landing');
         }
 
-        const imageAssets = cacheImages([
-          require('./images/hawkbanks.png'),
-          require('./images/bankwhite.png'),
-        ]);
+        if (!!makeRequests) {
+            await setUserOffers(await getUserOffers());
+            await setAvailableOffers(await getAvailableOffers());
+            await setAccounts(await getAccounts());
 
-        await Promise.all([...imageAssets]);
+            const imageAssets = cacheImages([
+              require('./images/hawkbanks.png'),
+              require('./images/bankwhite.png'),
+            ]);
 
+            await Promise.all([...imageAssets]);
+        } else {
+            const imageAssets = cacheImages([
+              require('./images/hawkbanks.png'),
+              require('./images/bankwhite.png'),
+            ]);
+            await Promise.all([...imageAssets]);
+        }
       } catch (e) {
         console.warn(e);
       } finally {
@@ -96,7 +110,7 @@ export default function App() {
   //   }
   // }, [appIsReady]);
 
-  if (!appIsReady) {
+  if (!appIsReady || !startingScreen) {
     return null;
   } else {
       async function hide() {
@@ -106,9 +120,23 @@ export default function App() {
       hide();
   }
 
+  const refreshAvailableOffers = () => {
+      return getAvailableOffers()
+        .then(data => {
+            setAvailableOffers(data);
+            return data
+        })
+  }
+
   return (
     // <View  onLayout={onLayoutRootView}>
-    <MainStackNavigator startingScreen={startingScreen}/>
+    <MainStackNavigator
+        startingScreen={startingScreen}
+        availableOffers={availableOffers}
+        userOffers={userOffers}
+        accounts={accounts}
+        refreshAvailableOffers={refreshAvailableOffers}
+    />
     // </View>
   )
 }

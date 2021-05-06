@@ -22,11 +22,11 @@ import MyOfferInfoAccountsScreen from './components/MyOfferInfoAccounts';
 import MyOfferInfoRewardsScreen from './components/MyOfferInfoRewards';
 const Stack = createStackNavigator()
 
-function MainStackNavigator(startingScreen) {
+function MainStackNavigator(props) {
     return (
         <NavigationContainer>
             <Stack.Navigator
-                initialRouteName={startingScreen}
+                initialRouteName={props.startingScreen}
                 screenOptions={({route, navigation}) => ({
                     gestureEnabled: true,
                     headerStyle: {
@@ -36,7 +36,7 @@ function MainStackNavigator(startingScreen) {
                         fontWeight: 'bold'
                     },
                     headerTintColor: '#ffd700',
-                    header: props => <Header route={route} navigation={navigation} />,
+                    header: props => <Header route={route} navigation={navigation} {...props} />,
                     headerBackTitleVisible: false
                 })}
                 headerMode='float'
@@ -63,9 +63,15 @@ function MainStackNavigator(startingScreen) {
                 />
                 <Stack.Screen
                     name='FindOffers'
-                    component={FindOffersScreen}
                     options={{ headerShown: true, animationEnabled: false }}
-                />
+                >
+                    {navProps => <FindOffersScreen
+                        {...navProps}
+                        refreshAvailableOffers={props.refreshAvailableOffers}
+                        availableOffers={props.availableOffers}
+                      />
+                    }
+                </Stack.Screen>
                 <Stack.Screen
                     name='OfferPage'
                     component={OfferPageScreen}
@@ -88,14 +94,16 @@ function MainStackNavigator(startingScreen) {
                 />
                 <Stack.Screen
                     name='MyOffers'
-                    component={MyOffersScreen}
                     options={{ headerShown: true, animationEnabled: false }}
-                />
+                >
+                    {navProps => <MyOffersScreen userOffers={props.userOffers} {...navProps} />}
+                </Stack.Screen>
                 <Stack.Screen
                     name='Accounts'
-                    component={AccountsScreen}
                     options={{ headerShown: true, animationEnabled: false }}
-                />
+                >
+                    {navProps => <AccountsScreen accounts={props.accounts} {...navProps} />}
+                </Stack.Screen>
                 <Stack.Screen
                     name='AccountInfo'
                     component={AccountInfoScreen}
