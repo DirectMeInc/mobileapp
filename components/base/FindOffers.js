@@ -333,12 +333,26 @@ export default class FindOffers extends React.Component {
         );
       };
 
-    componentDidUpdate(prevProps) {
-      null
-    }
+      formatterNoCents = new Intl.NumberFormat('en-US', {
+          style: 'currency',
+          currency: 'USD',
+          minimumFractionDigits: 0,
+          maximumFractionDigits: 0
+      });
+
+      sortStates(states) {
+        states.sort(function (a, b) {
+            if (a.abbreviation < b.abbreviation) { return -1; }
+            if (a.name > b.abbreviation) { return 1; }
+            return 0;
+        })
+        return states;
+      }
 
     render() {
         const { navigate } = this.props.navigation;
+
+        console.log(this.props);
 
         return (
           <View style={{ flex: 1, backgroundColor: '#25315C'}}>
@@ -420,7 +434,30 @@ export default class FindOffers extends React.Component {
                                           </View>
                                       </View>
                                       <View style={{marginLeft: 20, marginTop: 10}}>
-                                        <Text style={{fontSize: 16}}>Minimum savings of $10,000 </Text>
+                                        {
+                                            !!offer.savings_required && (
+                                                <Text style={{fontSize: 16, marginTop: 10}}>Minimum savings of {this.formatterNoCents.format(offer.savings_required)}</Text>
+                                            )
+                                        }
+                                        {
+                                            !!offer.monthly_direct_deposit_required && (
+                                                <Text style={{fontSize: 16, marginTop: 10}}>Monthly direct deposits of at least {this.formatterNoCents.format(offer.monthly_direct_deposit_required)}</Text>
+                                            )
+                                        }
+                                        {
+                                            !!offer.monthly_debit_spending_required && (
+                                                <Text style={{fontSize: 16, marginTop: 10}}>At least {this.formatterNoCents.format(offer.monthly_debit_spending_required)} debit purchases per month</Text>
+                                            )
+                                        }
+                                        {
+                                            !!offer.nationwide
+                                                ? <Text style={{fontSize: 16, marginTop: 10}}>Available nationwide </Text>
+                                                : (
+                                                    offer.states.length === 0
+                                                        ? null
+                                                        : <Text style={{fontSize: 16, marginTop: 10}}>Available in: {this.sortStates(offer.states).map(state => state.abbreviation).join(", ")}</Text>
+                                                )
+                                        }
                                       </View>
                                   </Card>
                                 )

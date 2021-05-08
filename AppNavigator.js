@@ -36,10 +36,10 @@ function MainStackNavigator(props) {
                         fontWeight: 'bold'
                     },
                     headerTintColor: '#ffd700',
-                    header: props => <Header route={route} navigation={navigation} {...props} />,
+                    header: navProps => <Header route={route} navigation={navigation} {...navProps} />,
                     headerBackTitleVisible: false
                 })}
-                headerMode='float'
+                headerMode='screen'
             >
                 <Stack.Screen
                     name='Landing'
@@ -48,9 +48,14 @@ function MainStackNavigator(props) {
                 />
                 <Stack.Screen
                     name='Login'
-                    component={LoginScreen}
                     options={{ headerShown: false, animationEnabled: true }}
-                />
+                >
+                    {navProps => <LoginScreen
+                        {...navProps}
+                        refreshAvailableOffers={props.refreshAvailableOffers}
+                      />
+                    }
+                </Stack.Screen>
                 <Stack.Screen
                     name='Register'
                     component={RegisterScreen}

@@ -91,6 +91,10 @@ class OfficialHeader extends React.Component {
     }
 
     render() {
+
+        if (['Landing', 'Register', 'Login'].indexOf(this.props.route.name) != -1) {
+            return null;
+        }
         return (
             <Header
                 placement="left"

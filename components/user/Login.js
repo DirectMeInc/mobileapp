@@ -44,7 +44,9 @@ export default class Login extends React.Component {
         login(this.state.email, this.state.password)
             .then(data => {
                 if (data == 'success') {
-                    navigate(this, 'FindOffers', {});
+                    this.props.refreshAvailableOffers().then(data => {
+                        navigate(this, 'FindOffers', {});
+                    })
                 } else if (data == 'incorrect') {
                     Alert.alert(
                         'Incorrect username or password',
