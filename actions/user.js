@@ -5,6 +5,13 @@ export const getUser = () => {
     return customFetch(`get-user/`, {throwError: false})
 }
 
+export const logOut = () => {
+    deleteValue('token');
+    deleteValue('email');
+    deleteValue('password');
+    return;
+}
+
 export const login = (email, password) => {
     let body = {email: email, password: password};
     return customFetch('token-auth/', {

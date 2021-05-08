@@ -6,6 +6,7 @@ import ActionBarHome from '../ActionBar';
 import { FontAwesome } from '@expo/vector-icons';
 import { Icon } from 'react-native-elements';
 import {navigate} from '../helpers';
+import {logOut} from '../../actions/user';
 
 const COLORS = {
     ORANGE: {name: 'Orange', color: Colors.orange20},
@@ -69,7 +70,7 @@ export default class Profile extends PureComponent {
                             <Card containerStyle={{width: '93%', borderRadius:10, backgroundColor:'#e8effc'}} onPress={this.showDialog}>
                             <View style={{flexDirection:'row', marginTop: 20, marginBottom: 20, justifyContent: 'space-between'}}>
                                 <View style={{flexDirection:'row'}}>
-                                    <Card containerStyle={{width: 50, height: 50, backgroundColor:'#e6e6ff', marginLeft: 10}}>
+                                    <Card containerStyle={{width: 50, height: 50, backgroundColor:'#e8effc', marginLeft: 10}}>
                                         <FontAwesome name="envelope" size={30} color="#0088ff" style={{textAlign: 'center', marginTop: 10}}/>
                                     </Card>
                                     <Text style={{fontSize: 20, fontWeight: 'bold', marginTop: 15, color: '#00004d', marginLeft: 20}}>Email</Text>
@@ -95,20 +96,36 @@ export default class Profile extends PureComponent {
                 </ExpandableSection>
 
                 <View style={{marginTop: 15, flexDirection: 'row', justifyContent: 'center'}}>
-                        <Card containerStyle={{width: '93%', borderRadius:10, backgroundColor:'#eff5ef'}} onPress={() => Alert.alert('We have sent an email to user@email.com')}>
+                        <Card containerStyle={{width: '93%', borderRadius:10, backgroundColor:'#e8effc'}} onPress={() => Alert.alert('We have sent an email to user@email.com')}>
                         <View style={{flexDirection:'row', marginTop: 20, marginBottom: 20, justifyContent: 'space-between'}}>
                             <View style={{flexDirection:'row'}}>
-                                <Card containerStyle={{width: 50, height: 50, backgroundColor:'#cfe2cf', marginLeft: 10}}>
-                                    <FontAwesome name="lock" size={30} color="#437043" style={{textAlign: 'center', marginTop: 10}}/>
+                                <Card containerStyle={{width: 50, height: 50, backgroundColor:'#e8effc', marginLeft: 10}}>
+                                    <FontAwesome name="lock" size={30} color="#0088ff" style={{textAlign: 'center', marginTop: 10}}/>
                                 </Card>
-                                <Text style={{fontSize: 20, fontWeight: 'bold', marginTop: 15, color: '#015401', marginLeft: 20}}>Change Password</Text>
+                                <Text style={{fontSize: 20, fontWeight: 'bold', marginTop: 15, color: '#00004d', marginLeft: 20}}>Change Password</Text>
                             </View>
-                            <Icon type='font-awesome-5' name="sort-down" size={40} style={{marginRight: 20}} color="#437043"/>
                         </View>
                         </Card>
                 </View>
 
-
+                <View style={{marginTop: 15, flexDirection: 'row', justifyContent: 'center'}}>
+                        <Card
+                            containerStyle={{width: '93%', borderRadius:10, backgroundColor:'#e8effc'}}
+                            onPress={() => {
+                                logOut();
+                                navigate(this, 'Landing', {});
+                            }}
+                        >
+                        <View style={{flexDirection:'row', marginTop: 20, marginBottom: 20, justifyContent: 'space-between'}}>
+                            <View style={{flexDirection:'row'}}>
+                                <Card containerStyle={{width: 50, height: 50, backgroundColor:'#e8effc', marginLeft: 10}}>
+                                    <FontAwesome name="sign-out" size={30} color="#0088ff" style={{textAlign: 'center', marginTop: 10}}/>
+                                </Card>
+                                <Text style={{fontSize: 20, fontWeight: 'bold', marginTop: 15, color: '#00004d', marginLeft: 20}}>Log Out</Text>
+                            </View>
+                        </View>
+                        </Card>
+                </View>
 
                 <ActionBarHome></ActionBarHome>
             </View>
