@@ -2,7 +2,7 @@ import React from 'react';
 import { TextInput } from 'react-native'
 import { View, Image, Text, Button, Colors } from 'react-native-ui-lib';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import {navigate} from './helpers';
+import {navigate} from '../helpers';
 
 export default class Landing extends React.Component {
     render() {
@@ -10,7 +10,7 @@ export default class Landing extends React.Component {
           <View style={{ flex: 1, flexDirection: 'row', alignContent: 'center', justifyContent: 'center', backgroundColor: '#25315C'}}>
               <View style={{ flexDirection: 'column' }}>
                   <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginTop: 80 }}>
-                      <Image style={{ width: 250, height: 30 }} source={require('../images/bankwhite.png')} />
+                      <Image style={{ width: 250, height: 30 }} source={require('../../images/bankwhite.png')} />
                   </View>
                   <Text style={{ textAlign: 'center', fontSize: 30, color: 'white', fontWeight: 'bold', marginTop: 110}}>
                       Find, track and complete over $4,000 worth of offers with ease.

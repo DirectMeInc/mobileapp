@@ -2,8 +2,8 @@ import React from 'react';
 import {FlatList, ScrollView, StyleSheet, Alert, RefreshControl, Image} from 'react-native';
 import { View, Button, Colors, PanningProvider, Dialog, Constants, Slider, Card, Text } from 'react-native-ui-lib';
 import DropDownPicker from 'react-native-dropdown-picker';
-import Header from '../Header';
-import ActionBarHome from '../ActionBar';
+import Header from '../global/Header';
+import ActionBarHome from '../global/ActionBar';
 import {navigate} from '../helpers';
 
 const INITIAL_VALUE = 0;
@@ -352,7 +352,9 @@ export default class FindOffers extends React.Component {
     render() {
         const { navigate } = this.props.navigation;
 
-        console.log(this.props);
+        if (!this.props.availableOffers) {
+          return null;
+        }
 
         return (
           <View style={{ flex: 1, backgroundColor: '#25315C'}}>
@@ -370,20 +372,6 @@ export default class FindOffers extends React.Component {
                   }
               >
                 <View style={{ display: 'flex', flexDirection:'row', marginLeft: 30, marginRight: 30, alignItems: 'center', justifyContent: 'space-between', marginTop: 30 }}>
-                    <Text style={{ fontSize: 30, color: '#2BF594', fontWeight: 'bold'}}>
-                        Find Offers
-                    </Text>
-                    <Button
-                            backgroundColor="#25315C"
-                            label="Filter"
-                            labelStyle={{ fontWeight: '600', fontSize: 20, color: 'white' }}
-                            style={{ width: 80}}
-                            borderRadius={10}
-                            outlineColor='white'
-                            onPress={this.showDialog}
-                    />
-                </View>
-                <View style={{ display: 'flex', flexDirection:'column', alignItems: 'center', marginTop: 30, marginLeft:30, marginRight:30, paddingBottom: 125}}>
                     <DropDownPicker
                             items={[
                                 {label: 'Recommended', value: 'Recommended'},
@@ -393,16 +381,14 @@ export default class FindOffers extends React.Component {
                                 {label: 'Monthly Direct Transactions', value: 'Monthly Direct Transactions'},
                                 {label: 'Expiration (Earliest)', value: 'Expiration (Earliest)'},
                                 {label: 'Expiration (Latest)', value: 'Expiration (Latest)'},
-
-
                             ]}
                             defaultValue={this.state.state}
                             placeholder="Sort By"
-                            placeholderStyle={{color: 'white', fontWeight: 'bold'}}
-                            containerStyle={{height: 40, marginBottom: 10}}
+                            placeholderStyle={{color: 'white', fontSize: 20, fontWeight: 'bold'}}
+                            containerStyle={{flexGrow: 1, marginRight: 30}}
                             style={{backgroundColor: '#25315C', width: '100%', color: 'white'}}
                             itemStyle={{
-                                justifyContent: 'flex-start'
+                                justifyContent: 'flex-start',
                             }}
                             dropDownStyle={{backgroundColor: '#fafafa'}}
                             onChangeItem={item => this.setState({
@@ -414,6 +400,18 @@ export default class FindOffers extends React.Component {
                               fontWeight: 'bold'
                           }}
                     />
+                    <Button
+                            backgroundColor="#25315C"
+                            label="Filter"
+                            labelStyle={{ fontWeight: 'bold', fontSize: 20, color: 'white' }}
+                            style={{ width: 100}}
+                            borderRadius={10}
+                            outlineColor='white'
+                            onPress={this.showDialog}
+                    />
+                </View>
+                <View style={{ display: 'flex', flexDirection:'column', alignItems: 'center', marginTop: 30, marginLeft:30, marginRight:30, paddingBottom: 125}}>
+
                         {
                             (new Array(10).fill(this.props.availableOffers).flat()).map((offer, i) => {
                                 return (
@@ -421,6 +419,8 @@ export default class FindOffers extends React.Component {
                                       key={i}
                                       width='100%'
                                       containerStyle={{backgroundColor: 'white', marginTop: 20, paddingBottom: '5%'}}
+                                      onPress={() => this.props.navigation.navigate('OfferPreview', {offerId: offer.id})}
+                                      // onPress={() => this.props.navigation.navigate('Offers', {screen: 'MyOfferInfoAccounts', initial: false})}
                                   >
                                       <View style={{flexDirection:'row', marginTop: 20, marginLeft: 20, alignContent: 'center', alignItems: 'center'}}>
                                           <Image

@@ -8,10 +8,13 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@burstware/expo-plaid-link": "^1.0.2",
     "@fortawesome/fontawesome-free": "^5.15.3",
     "@material-ui/core": "^4.11.3",
     "@material-ui/icons": "^4.11.2",
     "@material-ui/utils": "^4.11.2",
+    "@react-navigation/bottom-tabs": "^5.11.10",
+    "@react-navigation/material-bottom-tabs": "^5.3.15",
     "@react-navigation/native": "^5.9.3",
     "@react-navigation/stack": "^5.14.3",
     "expo": "~40.0.0",
@@ -28,7 +31,7 @@
     "react-native-modal-dropdown": "git+https://github.com/siemiatj/react-native-modal-dropdown.git",
     "react-native-onboarding-swiper": "^1.1.4",
     "react-native-pager-view": "^5.1.2",
-    "react-native-paper": "^4.7.2",
+    "react-native-paper": "^4.8.1",
     "react-native-reanimated": "~1.13.0",
     "react-native-safe-area-context": "3.1.9",
     "react-native-screens": "~2.15.2",

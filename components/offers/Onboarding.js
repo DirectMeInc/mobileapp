@@ -2,7 +2,7 @@ import { Image } from 'react-native';
 import React from 'react';
 import { FontAwesome } from '@expo/vector-icons';
 import Onboarding from 'react-native-onboarding-swiper'; // 0.4.0
-import {navigate} from './helpers';
+import {navigate} from '../helpers';
 
 export default class OnboardingPage extends React.Component {
     render() {

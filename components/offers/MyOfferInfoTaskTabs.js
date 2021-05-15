@@ -3,11 +3,11 @@ import { useWindowDimensions, ScrollView } from 'react-native';
 import { View, Image, Text, Card } from 'react-native-ui-lib';
 import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
 import Icons from 'react-native-vector-icons/MaterialIcons';
-import {navigate} from './helpers';
+import {navigate} from '../helpers';
 
 const FirstRoute = () => (
-    <View style={{flexDirection:'row', justifyContent: 'center', alignItems: 'center'}}>
-        <Card containerStyle={{width: '95%', borderRadius: 10, backgroundColor:'white', marginTop: 10}}>
+    <View style={{ flex: 1, backgroundColor: '#25315C' }}>
+        <Card containerStyle={{width: '95%', borderRadius: 10, backgroundColor:'white', marginLeft: 10, marginTop: 10}}>
         <View style={{flexDirection:'row', marginTop: 20}}>
             <Icons name='account-balance' style={{ fontSize: 40, color: '#000099', marginLeft: 20 }}></Icons>
             <Text style={{fontSize: 30, fontWeight: 'bold', marginLeft:10, marginTop: 2}}>Savings</Text>
@@ -22,39 +22,21 @@ const FirstRoute = () => (
 );
 
 const SecondRoute = () => (
-    <View style={{flexDirection:'row', justifyContent: 'center', alignItems: 'center'}}>
-        <Card containerStyle={{width: '95%', borderRadius:10, backgroundColor:'white', marginTop: 10}}>
-        <View style={{flexDirection:'row', marginTop: 20}}>
-            <Image
-                style={{ width: 50,
-                    height: 50, marginLeft: 20}}
-                source= {{uri: 'https://i.pinimg.com/originals/70/4a/1e/704a1e534e8dc0138eee3ded449555d5.png'}}
-            />
-            <View style={{flexDirection:'column', marginLeft: 20}}>
-                <Text style={{fontSize: 25, fontWeight: 'bold'}}>Chase Bank</Text>
-                <Text style={{fontSize: 15, marginTop: 5}}>Savings</Text>
-                <Text style={{fontSize: 15, marginTop: 15}}>Interest Rate: 0.0%</Text>
-                <Text style={{fontSize: 15, marginTop: 10}}>Minimum Opening Balance: None!</Text>
-                <Text style={{fontSize: 15, marginTop: 10, marginBottom: 15}}>Monthly fee of $5.</Text>
-
-            </View>
-        </View>
-        </Card>
-    </View>
+    <View style={{ flex: 1, backgroundColor: '#25315C' }}/>
 );
 
 const ThirdRoute = () => (
     <View style={{ flex: 1, backgroundColor: '#25315C' }} />
 );
 
-export default function OfferTabs() {
+export default function MyOfferInfoTaskTabs() {
     const layout = useWindowDimensions();
 
     const [index, setIndex] = React.useState(0);
     const [routes] = React.useState([
-        { key: 'first', title: 'Tasks' },
-        { key: 'second', title: 'Available Accounts' },
-        { key: 'third', title: 'Rewards' },
+        { key: 'first', title: 'Live' },
+        { key: 'second', title: 'Done' },
+        { key: 'third', title: 'Coming Up' },
     ]);
 
     const renderScene = SceneMap({

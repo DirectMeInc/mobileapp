@@ -1,12 +1,12 @@
 import React from 'react';
 import { TouchableOpacity, ScrollView, StyleSheet} from 'react-native';
 import { View, Image, Text, Button, Colors, PanningProvider, Dialog, Constants, Slider, Card, TabBar } from 'react-native-ui-lib';
-import Header from './Header';
-import ActionBarHome from './ActionBar';
+import Header from '../global/Header';
+import ActionBarHome from '../global/ActionBar';
 import { FontAwesome } from '@expo/vector-icons';
 import { Icon } from 'react-native-elements';
 import Icons from 'react-native-vector-icons/MaterialIcons';
-import {navigate} from './helpers';
+import {navigate} from '../helpers';
 
 export default class MyOfferInfo extends React.Component {
     render() {

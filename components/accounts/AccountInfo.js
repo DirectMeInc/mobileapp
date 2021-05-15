@@ -3,9 +3,9 @@ import {StyleSheet, Alert, FlatList, ScrollView} from 'react-native';
 import { View, Image, Text, Button, Colors, PanningProvider, Dialog, Constants, Slider, Card, ListItem, ActionBar } from 'react-native-ui-lib';
 import DropDownPicker from 'react-native-dropdown-picker';
 import ModalDropdown from 'react-native-modal-dropdown';
-import Header from './Header';
-import ActionBarHome from './ActionBar';
-import {navigate} from './helpers';
+import Header from '../global/Header';
+import ActionBarHome from '../global/ActionBar';
+import {navigate} from '../helpers';
 
 export default class AccountInfo extends React.Component {
     constructor(props) {
