@@ -12,3 +12,11 @@ export const getUserOffers = () => {
         method: "GET"
     })
 }
+
+export const getOfferPreview = (offer_id) => {
+    return customFetch('get-test-instance/', {
+        method: 'GET',
+        authorized: false,
+        params: {offer_id: offer_id}
+    })
+}

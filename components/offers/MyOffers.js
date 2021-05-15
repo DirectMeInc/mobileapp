@@ -1,9 +1,9 @@
 import React from 'react';
 import {ScrollView} from 'react-native';
 import { View, Image, Text, Button, Colors, PanningProvider, Dialog, Constants, Slider, Card } from 'react-native-ui-lib';
-import Header from '../Header';
-import ActionBarHome from '../ActionBar';
-import TabOffers from '../TabOffers';
+import Header from '../global/Header';
+import ActionBarHome from '../global/ActionBar';
+import TabOffers from './TabOffers';
 import {navigate} from '../helpers';
 
 

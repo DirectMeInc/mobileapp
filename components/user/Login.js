@@ -45,7 +45,7 @@ export default class Login extends React.Component {
             .then(data => {
                 if (data == 'success') {
                     this.props.refreshAvailableOffers().then(data => {
-                        navigate(this, 'FindOffers', {});
+                        navigate(this, 'Tabs', {});
                     })
                 } else if (data == 'incorrect') {
                     Alert.alert(

@@ -2,33 +2,35 @@ import React from 'react';
 import {FlatList, ScrollView, StyleSheet, Alert, TouchableOpacity} from 'react-native';
 import { View, Image, Text, Button, Colors, PanningProvider, Dialog, Constants, Slider, Card } from 'react-native-ui-lib';
 import Icons from 'react-native-vector-icons/MaterialIcons';
-import Header from './Header';
-import ActionBarHome from './ActionBar';
+import Header from '../global/Header';
+import ActionBarHome from '../global/ActionBar';
 import { FontAwesome } from '@expo/vector-icons';
-import {navigate} from './helpers';
+import {navigate} from '../helpers';
+import PlaidLink from '@burstware/expo-plaid-link';
+import {getLinkToken} from '../../actions/link';
 
-export default class OfferPage extends React.Component {
+
+export default class StartOffer extends React.Component {
 
     constructor(props){
         super(props);
         this.state  = {
+            linkToken: null
         }
-        this.handleBackButtonClick = this.handleBackButtonClick.bind(this);
-
     }
 
     handleBackButtonClick() {
         this.props.navigation.goBack(null);
         return true;
     }
+
     render() {
         const { navigate } = this.props.navigation;
+
         return (
             <View style={{ flex: 1, backgroundColor: '#25315C'}}>
             <View style={{ flexDirection: 'column', marginBottom: 0, paddingBottom: 0 }}>
             <ScrollView style={{ marginBottom: 145, paddingTop: 10 }}>
-
-
                 <View style={{flexDirection: 'column'}}>
                     <Text style={{ fontSize: 30, color: '#2BF594', fontWeight: 'bold', position: 'absolute', marginLeft: 20, marginRight: 30, marginTop: 40}}>
                         Chase | $150 Savings
@@ -56,18 +58,6 @@ export default class OfferPage extends React.Component {
                         </View>
                     </Card>
                 </View>
-
-
-
-
-
-
-
-
-
-
-
-
 
                 <View style={{flexDirection:'row', justifyContent: 'center', alignItems: 'center', marginTop: 5}}>
                     <Card
@@ -128,15 +118,16 @@ export default class OfferPage extends React.Component {
                             labelStyle={{ fontWeight: '600', fontSize: 20, color: 'white' }}
                             style={{ width: 200 }}
                             borderRadius={10}
-                            onPress={() => push('Onboarding')}
+                            onPress={() => this.props.navigation.navigate('PlaidLinking', {offerId: this.props.route.params.offerId})}
                         />
                     </View>
 
                 </View>
 
             </ScrollView>
-                <ActionBarHome></ActionBarHome>
+
             </View>
+            <ActionBarHome></ActionBarHome>
             </View>
         )
     }

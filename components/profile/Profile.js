@@ -1,8 +1,8 @@
 import React, {PureComponent} from 'react';
 import {ScrollView, StyleSheet, Alert} from 'react-native';
 import { View, Image, Text, Button, Colors, PanningProvider, Dialog, Constants, Slider, Card, Avatar, ExpandableSection, RadioButton, RadioGroup } from 'react-native-ui-lib';
-import Header from '../Header';
-import ActionBarHome from '../ActionBar';
+import Header from '../global/Header';
+import ActionBarHome from '../global/ActionBar';
 import { FontAwesome } from '@expo/vector-icons';
 import { Icon } from 'react-native-elements';
 import {navigate} from '../helpers';

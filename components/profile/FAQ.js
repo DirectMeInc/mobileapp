@@ -2,9 +2,9 @@ import React, {PureComponent} from 'react';
 import {ScrollView, StyleSheet} from 'react-native';
 import {Card, Text, Image, ListItem, Carousel, Spacings, View, ExpandableSection, Switch} from 'react-native-ui-lib';
 import { Icon } from 'react-native-elements';
-import Header from './Header';
-import ActionBarHome from './ActionBar';
-import {navigate} from './helpers';
+import Header from '../global/Header';
+import ActionBarHome from '../global/ActionBar';
+import {navigate} from '../helpers';
 
 export default class FAQ extends PureComponent {
 

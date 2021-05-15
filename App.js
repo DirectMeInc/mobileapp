@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import MainStackNavigator from './AppNavigator';
-import { View } from 'react-native';
+import { View, StatusBar } from 'react-native';
 import * as SplashScreen from 'expo-splash-screen';
 import {login, getUser} from './actions/user';
 import { getAvailableOffers, getUserOffers } from './actions/offers';
@@ -41,8 +41,8 @@ export default function App() {
 
         if (!!token) {
             let userData = await getUser();
-            if (!!userData) {
-                setStartingScreen('FindOffers');
+            if (!!userData && !!userData.email) {
+                setStartingScreen('Tabs');
                 setUser(userData);
                 tryNewToken = false;
                 alreadySet = true;
@@ -58,8 +58,15 @@ export default function App() {
                 alreadySet = true;
                 let loginStatus = await login(email, password);
                 if (loginStatus == 'success') {
-                    setStartingScreen('FindOffers');
-                    setUser(data);
+                    let userData = await getUser();
+                    if (!!userData && !!userData.email) {
+                        setStartingScreen('Tabs');
+                        setUser(userData);
+                        alreadySet = true;
+                        makeRequests = true;
+                    } else {
+                        setStartingScreen('WelcomeBack');
+                    }
                 } else {
                     setStartingScreen('WelcomeBack');
                 }
@@ -91,7 +98,6 @@ export default function App() {
       } catch (e) {
         console.warn(e);
       } finally {
-        // Tell the application to render
         setAppIsReady(true);
       }
     }
@@ -99,22 +105,11 @@ export default function App() {
     prepare();
   }, []);
 
-  // const onLayoutRootView = useCallback(async () => {
-  //   if (appIsReady) {
-  //     // This tells the splash screen to hide immediately! If we call this after
-  //     // `setAppIsReady`, then we may see a blank screen while the app is
-  //     // loading its initial state and rendering its first pixels. So instead,
-  //     // we hide the splash screen once we know the root view has already
-  //     // performed layout.
-  //     await SplashScreen.hideAsync();
-  //   }
-  // }, [appIsReady]);
-
   if (!appIsReady || !startingScreen) {
     return null;
   } else {
       async function hide() {
-          await SplashScreen.hideAsync();
+          await setTimeout(() => SplashScreen.hideAsync(), 2000);
       }
 
       hide();
@@ -128,15 +123,25 @@ export default function App() {
         })
   }
 
+  const refreshAccounts = () => {
+      return getAccounts()
+        .then(data => {
+            setAccounts(data);
+            return data
+        })
+  }
+
   return (
-    // <View  onLayout={onLayoutRootView}>
+    <>
+    <StatusBar barStyle="light-content" translucent={true} />
     <MainStackNavigator
         startingScreen={startingScreen}
         availableOffers={availableOffers}
         userOffers={userOffers}
         accounts={accounts}
+        refreshAccounts={refreshAccounts}
         refreshAvailableOffers={refreshAvailableOffers}
     />
-    // </View>
+    </>
   )
 }

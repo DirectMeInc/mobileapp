@@ -1,26 +1,36 @@
 import React, { Component, useContext } from 'react';
-import {ScrollView} from 'react-native';
+import {ScrollView, RefreshControl} from 'react-native';
 import { View, Image, Text, Button, Colors, PanningProvider, Dialog, Constants, Slider, Card } from 'react-native-ui-lib';
-import Header from '../Header';
-import ActionBarHome from '../ActionBar';
+import Header from '../global/Header';
+import ActionBarHome from '../global/ActionBar';
 import {navigate} from '../helpers';
 
 export default class Accounts extends React.Component {
+    state = {
+        refreshing: false
+    }
+
     render() {
+        console.log(this.props);
         return (
             <View style={{ flex: 1, backgroundColor: '#25315C'}}>
             <View style={{ flexDirection: 'column', marginBottom: 0, paddingBottom: 0 }}>
-                <ScrollView style={{ marginBottom: 80, paddingTop: 10 }}>
-                <View style={{ flexDirection:'row', marginTop: 30}}>
-                    <Text style={{ fontSize: 30, color: '#2BF594', fontWeight: 'bold', position: 'absolute', marginLeft:20, marginRight:30}}>
-                        My Accounts
-                    </Text>
-                </View>
-
-
-                    <View style={{ flex: 1, backgroundColor: '#25315C', marginTop: 50, marginLeft: 20}}>
-                        <Card
-                            containerStyle={{width: '93%', borderRadius:10, backgroundColor:'white'}}
+            <ScrollView
+                style={{ paddingTop: 5 }}
+                refreshControl={
+                  <RefreshControl
+                    refreshing={this.state.refreshing}
+                    onRefresh={() => this.setState(
+                      {refreshing: true},
+                      () => this.props.refreshAccounts().then(data => this.setState({refreshing: false}))
+                    )}
+                  />
+                }
+            >
+                    <View style={{ display: 'flex', flexDirection:'column', alignItems: 'center', marginTop: 30, marginLeft:30, marginRight:30, paddingBottom: 125}}>
+                      <Card
+                          // key={i}
+                            containerStyle={{width: '100%', borderRadius:10, backgroundColor:'white', marginTop: 20, paddingBottom: '5%'}}
                             onPress={() => navigate(this, 'AccountInfo', {})}>
                         <View style={{flexDirection:'row', marginTop: 20}}>
                             <Image
@@ -37,7 +47,7 @@ export default class Accounts extends React.Component {
                             <Text style={{fontSize: 20, fontWeight: 'bold'}}>Balance:</Text>
                             <Text style={{fontSize: 20, color: '#3F518F', marginLeft: 2}}>-$100.00</Text>
                         </View>
-                        </Card>
+                      </Card>
                     </View>
 
                 </ScrollView>

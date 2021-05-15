@@ -1,9 +1,12 @@
 import React from 'react';
 import { StyleSheet, TouchableOpacity } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
+import { CommonActions } from '@react-navigation/native';
 import { ActionBar, View, Text, Button } from 'react-native-ui-lib';
 import { Icon } from 'react-native-elements';
-import {navigate} from './helpers';
+import {navigate} from '../helpers';
+import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
+
 
 const offerScreens = [
     'MyOffers',
@@ -16,8 +19,13 @@ const offerScreens = [
 ]
 
 const accountScreens = [
-    'Accounts',
+    'MyAccounts',
     'AccountInfo'
+]
+
+const findOffersScreens = [
+    'FindOffersBase',
+    'OfferPreview'
 ]
 
 class ActionBarHome extends React.Component {
@@ -25,18 +33,26 @@ class ActionBarHome extends React.Component {
       return (
           <View style={styles.bar}>
               <View style={styles.iconRow}>
-                <TouchableOpacity onPress={() => navigate(this, 'MyOffers', {})} hitSlop={{top: 20, bottom: 20, left: 20, right: 20}}>
-                  <View style={{backgroundColor: this.props.route.name == 'MyOffers' ? '#323C56' : '#44589F', borderRadius: 100, height: 50, width: 50, display: "flex", justifyContent: "center", alignItems: "center"}}>
+                <TouchableOpacity
+                    onPress={() => offerScreens.indexOf(this.props.route.name) == -1 ? this.props.navigation.navigate('Offers') : this.props.navigation.navigate('MyOffers')}
+                    hitSlop={{top: 20, bottom: 20, left: 20, right: 20}}
+                  >
+                  <View style={{backgroundColor:offerScreens.indexOf(this.props.route.name) != -1 ? '#323C56' : '#44589F' , borderRadius: 100, height: 50, width: 50, display: "flex", justifyContent: "center", alignItems: "center"}}>
                     <Icon style={{}} type='font-awesome-5' name={'coins'} size={24} color="white"/>
                   </View>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => navigate(this, 'Accounts', {})} hitSlop={{top: 20, bottom: 20, left: 20, right: 20}}>
-                  <View style={{backgroundColor: this.props.route.name == 'Accounts' ? '#323C56' : '#44589F', borderRadius: 100, height: 50, width: 50, display: "flex", justifyContent: "center", alignItems: "center"}}>
+                <TouchableOpacity
+                    onPress={() => accountScreens.indexOf(this.props.route.name) == -1 ? this.props.navigation.navigate('AccountsTab') : this.props.navigation.navigate('MyAccounts')}
+                    hitSlop={{top: 20, bottom: 20, left: 20, right: 20}}>
+                  <View style={{backgroundColor: accountScreens.indexOf(this.props.route.name) != -1 ? '#323C56' : '#44589F', borderRadius: 100, height: 50, width: 50, display: "flex", justifyContent: "center", alignItems: "center"}}>
                     <Icon type='font-awesome-5' name={'wallet'} size={24} color="white"/>
                   </View>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => navigate(this, 'FindOffers', {})} hitSlop={{top: 20, bottom: 20, left: 20, right: 20}}>
-                  <View style={{backgroundColor: this.props.route.name == 'FindOffers' ? '#323C56' : '#44589F', borderRadius: 100, height: 50, width: 50, display: "flex", justifyContent: "center", alignItems: "center"}}>
+                <TouchableOpacity
+                    onPress={() => findOffersScreens.indexOf(this.props.route.name) == -1 ? this.props.navigation.navigate('FindOffers') : this.props.navigation.navigate('FindOffersBase')}
+                    hitSlop={{top: 20, bottom: 20, left: 20, right: 20}}
+                >
+                  <View style={{backgroundColor: findOffersScreens.indexOf(this.props.route.name) != -1 ? '#323C56' : '#44589F', borderRadius: 100, height: 50, width: 50, display: "flex", justifyContent: "center", alignItems: "center"}}>
                     <Icon type='font-awesome-5' name={'search-dollar'} size={24} color="white"/>
                   </View>
                 </TouchableOpacity>
@@ -55,7 +71,7 @@ export default function(props) {
   const navigation = useNavigation();
   const route = useRoute();
 
-  return <ActionBarHome {...props} route={route} navigation={navigation} />;
+  return <ActionBarHome route={route} navigation={navigation} />;
 }
 
 const styles = StyleSheet.create({

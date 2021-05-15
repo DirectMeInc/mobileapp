@@ -1,10 +1,10 @@
 import React, { Component, useContext } from 'react';
 import { TouchableOpacity, ScrollView } from 'react-native';
 import { View, Image, Text, Button, Colors, PanningProvider, Dialog, Constants, Slider, Card, Avatar } from 'react-native-ui-lib';
-import Header from './Header';
-import ActionBarHome from './ActionBar';
+import Header from '../global/Header';
+import ActionBarHome from '../global/ActionBar';
 import Icons from 'react-native-vector-icons/MaterialIcons';
-import {navigate} from './helpers';
+import {navigate} from '../helpers';
 
 export default class MyOfferInfoAccounts extends React.Component {
 
